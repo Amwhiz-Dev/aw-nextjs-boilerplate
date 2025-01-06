@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import style from "@codeBase/component/LoginPass/login.module.scss";
-import LoginModuleLayout from "@codeBase/layout/LoginModule";
-import CustomInput from "@codeBase/ui-component/CustomInput";
-import CustomPasswordInput from "@codeBase/ui-component/CustomPasswordInput";
+import style from "@codeBase/src/component/LoginPass/login.module.scss";
+import LoginModuleLayout from "@codeBase/src/layout/Login";
+import CustomInput from "@codeBase/src/ui-component/Input";
+import CustomPasswordInput from "@codeBase/src/ui-component/Password";
 import AuthOptions from "./AuthOptions";
 import { ArrowRight } from "iconsax-react";
 import { Button } from "primereact/button";

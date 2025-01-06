@@ -13,7 +13,6 @@ const CustomInput: React.FC<CustomInputProps> = ({
   label,
   readonly,
   disable,
-  error,
   placeHolder,
 }) => {
   return (

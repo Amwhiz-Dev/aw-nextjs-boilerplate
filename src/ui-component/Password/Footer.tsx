@@ -1,5 +1,3 @@
-import { Divider } from "primereact/divider";
-
 export const footer = (passValid?: Record<string, boolean>) => {
   return (
     <div className="footer-password-container">

@@ -1,5 +1,5 @@
 import { appTitlte } from "@codeBase/src/common/appTitle";
-import LoginWithPassModule from "@codeBase/src/component/LoginModule";
+import LoginWithPassModule from "@codeBase/src/component/LoginPass";
 import React, { useEffect } from "react";
 
 const LoginWithPassWord = () => {

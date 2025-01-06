@@ -1,16 +1,15 @@
 import Header from "@codeBase/src/component/Header";
-import React, { ReactNode, useMemo, useState } from "react";
-import style from "./layout.module.scss";
+import React, { ReactNode, useMemo } from "react";
+import style from "@codeBase/src/layout/Portal/layout.module.scss";
 import SideNavModule from "@codeBase/src/component/SideNavModule";
 import { usePathname } from "next/navigation";
 
 const HomeLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [expand, setExpand] = useState(true);
   const pathname = usePathname();
   const isPortalPath = useMemo(() => pathname?.includes("/portal"), [pathname]);
 
   const mainCardClass = `${style.card} ${
-    isPortalPath ? (expand ? style.expand : style.colapse) : style.width_full
+    isPortalPath ? style.expand : style.width_full
   }`;
 
   return (

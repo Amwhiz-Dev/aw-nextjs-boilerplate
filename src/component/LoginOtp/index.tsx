@@ -1,4 +1,4 @@
-import LoginModuleLayout from "@codeBase/layout/LoginModule";
+import LoginModuleLayout from "@codeBase/src/layout/Login";
 import React, { useState } from "react";
 import VerifyOtp from "./FormElements/VerifyOtp";
 import SendOtp from "./FormElements/SendOtp";

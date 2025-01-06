@@ -6,8 +6,6 @@ import UserIcon from "../icon/User";
 import SettingIcon from "../icon/Setting";
 import { LoginCurve } from "iconsax-react";
 import { useRouter } from "next/router";
-// import logo from "@codeBase/public/logo.svg";
-// import Image from "next/image";
 import { UserIconButton } from "@codeBase/src/interface/userIcon";
 import { getUser } from "@codeBase/src/state-management/redux/slice/user";
 import { RootState } from "@codeBase/src/state-management/redux/store";
@@ -60,7 +58,7 @@ const Header: React.FC = () => {
     <div className={style.container}>
       <div className={style.logo_container}>
         {/* <Image src={logo} alt="logo" width={106} height={53} /> */}
-        Logo
+        LOGO
       </div>
       <UserProfile />
     </div>

@@ -1,8 +1,7 @@
-import { AuthOptionProps } from "@codeBase/interface/authOption";
+import { AuthOptionProps } from "@codeBase/src/interface/authOption";
 import { Button } from "primereact/button";
 import { InputOtp } from "primereact/inputotp";
 import React from "react";
-import styles from "@codeBase/component/LoginOtp/login.module.scss";
 import { useRouter } from "next/router";
 const VerifyOtp: React.FC<AuthOptionProps> = ({ formValue, setFormValue }) => {
   const router = useRouter();

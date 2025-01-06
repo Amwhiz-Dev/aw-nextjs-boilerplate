@@ -1,4 +1,4 @@
-import { AuthOptionProps } from "@codeBase/interface/authOption";
+import { AuthOptionProps } from "@codeBase/src/interface/authOption";
 import { Whatsapp } from "iconsax-react";
 import { Button } from "primereact/button";
 import React from "react";

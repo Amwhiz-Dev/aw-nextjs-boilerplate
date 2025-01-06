@@ -19,6 +19,7 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-expressions": "warn",
       "react/prop-types": "warn",
       "no-unsafe-optional-chaining": "warn",
+      "@typescript-eslint/no-unused-expressions":"off"
       // other custom rules
     },
   },

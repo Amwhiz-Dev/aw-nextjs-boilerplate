@@ -1,4 +1,4 @@
-import LoginWithOtpModule from "@codeBase/component/LoginOtp";
+import LoginWithOtpModule from "@codeBase/src/component/LoginOtp";
 import React from "react";
 
 const LoginWithOtp = () => {

@@ -1,4 +1,4 @@
-const baseName = "Atyab Al Marshoud";
+const baseName = "Boiler Template";
 
 export const appTitlte = {
   dashboard: `${baseName} - Dashboard`,

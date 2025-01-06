@@ -1,8 +1,7 @@
 import { CustomPasswordInputProps } from "@codeBase/src/interface/customPassword";
 import { passwordValidation } from "@codeBase/src/utils/globalHelper";
-import { Divider } from "primereact/divider";
 import { Password } from "primereact/password";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { footer } from "./Footer";
 
 const header = <div className="font-bold mb-3">Pick a password</div>;
@@ -17,7 +16,6 @@ const CustomPasswordInput: React.FC<CustomPasswordInputProps> = ({
   label,
   readonly,
   disable,
-  error,
   placeHolder,
 }) => {
   const [password, setPassword] = useState<string>("");
