@@ -1,0 +1,12 @@
+.card {
+    @apply transition-all duration-[20000] ease-in-out pt-[15px];
+}
+ .expand {
+     width: 280px;
+ }
+
+ .colapse {
+     width: 60px;
+ }
+
+

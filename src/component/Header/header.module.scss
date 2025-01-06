@@ -1,0 +1,7 @@
+.container {
+    @apply bg-primary h-[60px] flex w-full justify-between px-[30px] pt-[4px] items-center;
+
+    .logo_container {
+        @apply text-white text-[28px] font-bold;
+    }
+}

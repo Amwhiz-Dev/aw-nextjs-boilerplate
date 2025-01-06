@@ -1,0 +1,17 @@
+.login_container {
+    @apply flex justify-around w-full pt-[110px];
+
+    .module_contaier {
+        @apply w-[400px];
+
+        .title {
+            @apply font-[700] text-[32px] leading-[40px] pb-[10px];
+        }
+
+        .discription {
+            @apply text-gray-500 text-[13px] leading-[18px] font-[500]
+        }
+
+       
+    }
+}

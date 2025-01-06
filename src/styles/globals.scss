@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --primary-color-bg: #000000;
+    --secondary-color-bg: #F1F1F1;
+    --menu-color-bg: #EBEBEB;
+    --active-color: #FFFFFF;
+    --menu-section-bg: #A1A1AA;
+    --secondary-text-color: #1A1A1A;
+    --filled-color: #AFFEBF;
+    --valid-color: #00800a;
+    --filled-text-color: #014B40;
+    --pending-color: #FFD6A4;
+    --unfilled-color: #FFEB78;
+    --error-text-color: #FF2B2B;
+    --important-text-color: #005BD3;
+    --user-profile-color: #F9E2FF;
+    --divide-color: #E7E8EB;
+    --email-color: #8C8C8C;
+    --teritary-color-bg: #1A1A1A1A;
+}
+
+
+body {
+    @apply bg-primary;
+}
+
+.overlay-container {
+    @apply w-[270px] h-[186px];
+
+    .p-overlaypanel-content {
+        .overlay-profile {
+            @apply flex gap-[14px] border-b-[1px] border-b-divideColor pb-[16px];
+
+            .user-button-color {
+                @apply size-[40px] bg-userProfile flex items-center rounded-[8px] px-[8px];
+            }
+
+            .user-profile {
+                @apply w-[80%];
+
+                .name {
+                    @apply font-[500] text-primary text-[14px] leading-[20px];
+                }
+
+                .email {
+                    @apply font-[400] text-emailColor text-[12px] leading-[18px] italic !important;
+                }
+            }
+        }
+
+        .set-container {
+            @apply mt-[10px] flex gap-[8px] items-center text-center capitalize pt-[10px] pb-[20px] border-b-[1px] border-b-divideColor cursor-pointer;
+
+            .setting-name {
+                @apply font-[500] text-[14px] leading-[18px];
+            }
+        }
+    }
+
+    .logout-btn {
+        @apply h-[36px] min-w-full bg-teritaryColor flex items-center justify-center gap-[8px] mt-[10px];
+
+        .label {
+            @apply font-[500] text-[14px] leading-[18px] text-textSecondary capitalize rounded-[8px];
+        }
+    }
+}
+
+.user-button {
+    @apply size-[40px] bg-white flex items-center rounded-full px-[8px];
+}
+
+.required::before {
+    content: " *";
+    color: var(--error-text-color);
+    padding-right: 5px;
+}
+
+.password.valid {
+    @apply text-validColor font-[500];
+}
+
+.footer-password-tite {
+    @apply font-[500] mt-[12px] mb-[5px];
+}
+
+.footer-password-container {
+    @apply max-w-[360px];
+}
+
+.dashboard-inputs {
+    @apply flex flex-col gap-[12px];
+
+    label {
+        @apply font-[500] text-[16px] leading-[16px] text-black;
+    }
+
+    input {
+        @apply border-[0.5px] border-textSecondary h-[40px] rounded-[8px] px-[8px] bg-transparent mb-[16px];
+    }
+}
+
+.dashboard-pass-inputs {
+    @apply flex flex-col gap-[12px] w-full;
+
+    label {
+        @apply font-[500] text-[16px] leading-[16px] text-black w-full;
+    }
+
+    .p-password input {
+        @apply border-[0.5px] border-textSecondary h-[40px] rounded-[8px] px-[8px] bg-transparent mb-[16px] w-full;
+    }
+}
+
+.dashboard-checkbox {
+    label {
+        @apply ml-[9px] cursor-pointer;
+    }
+}
+
+.primary-button {
+    @apply w-full bg-primary h-[40px] flex justify-center items-center text-white gap-[9px];
+}
+
+
+
+.otp-field {
+    @apply mt-[30px];
+
+    label {
+        @apply font-[500] text-[16px] leading-[16px] text-black !important;
+    }
+
+    .p-inputotp {
+        @apply w-full justify-center mt-[11px] mb-[40px];
+
+        .p-inputotp-input {
+            @apply size-[60px] !important;
+        }
+    }
+}
+
+.phone-div {
+    @apply my-[30px];
+
+    label {
+        @apply font-[500] text-[16px] leading-[24px];
+    }
+
+    .phone-container {
+        @apply bg-white h-[40px] mt-[11px];
+
+        .react-tel-input {
+            @apply flex
+        }
+
+        .react-tel-input .form-control {
+            @apply h-[40px] w-full px-[8px] border-0 ring-gray-400 focus:ring-0 focus-visible:outline-none ml-[32px] !important
+        }
+
+        .react-tel-input .flag-dropdown {
+            @apply h-[40px] bg-white border-0 ring-gray-400 focus:ring-0 focus-visible:outline-none !important
+        }
+    }
+}
+
+.list-none {
+
+    .default-menu {
+        @apply mx-[15px] mt-[15px] cursor-pointer rounded-[22px] hover:bg-[#ffffff5c] transition-all;
+
+        .menu-list {
+
+            @apply font-[500] text-[15px] leading-[20px] flex gap-[13px] h-[36px] mx-[15px] items-center;
+        }
+    }
+    .active-menu{
+        @apply bg-white transition-all;
+    }
+}
+
+.group-label{
+    @apply mt-[24px] mx-[32px] text-menuSection text-[14px] font-[500] tracking-[1px] leading-[18px] uppercase cursor-default;
+}

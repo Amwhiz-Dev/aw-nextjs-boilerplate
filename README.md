@@ -1,3 +1,5 @@
+# Next.js Template
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
@@ -23,6 +25,42 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
 
 This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## File Structure
+
+```bash
+src/
+├── common/
+│   └── toastMessage.ts
+├── component/
+│   ├── Header/
+│   ├── icon/
+│   │   ├── Setting.tsx
+│   │   └── User.tsx
+│   ├── LoginOtp/
+│   └── LoginPass/
+├── enum/
+│   └── toastMessage.enum.ts
+├── helper/
+│   └── url.builder.ts
+├── interface/
+│   ├── url.builder.ts
+│   └── userIcon.ts
+├── layout/
+│   └── HomeLayout/
+│       └── layout.module.scss
+├── pages/
+│   ├── login-otp.tsx
+│   ├── login-pass.tsx
+├── service/
+│   └── api.service.ts
+├── state-management/
+│   └── NetWorkStatus.ts
+├── style/
+│   └── global.scss
+└── utils/
+    └── globalHelper.ts
+```
 
 ## Learn More
 
