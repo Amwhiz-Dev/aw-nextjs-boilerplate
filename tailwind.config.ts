@@ -9,9 +9,13 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        grey: '0 0 0 0.2rem #6c6c6c42', // Set default box shadow
+      },
       colors: {
-        primary: "var(--primary-color-bg)",
+        primary: "var(--primary-color)",
         background: "var(--secondary-color-bg)",
+        secondaryBorderColor: "var(--secondary-btn-border-color)",
         menu: "var(--menu-color-bg)",
         active: "var(--active-color",
         menuSection: "var(--menu-section-bg)",
@@ -26,7 +30,13 @@ export default {
         divideColor: "var( --divide-color)",
         emailColor: "var( --email-color)",
         teritaryColor: "var( --teritary-color-bg)",
-        textSecondary: "var(----secondary-text-color)",
+        textSecondary: "var(--secondary-text-color)",
+        boxShadow:"var(--box-shadow)"
+      },
+    },
+    variants: {
+      extend: {
+        boxShadow: ['hover', 'enabled'], // Enable hover and enabled variants for shadow
       },
     },
   },

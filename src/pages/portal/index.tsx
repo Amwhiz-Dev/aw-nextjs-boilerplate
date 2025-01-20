@@ -1,14 +1,9 @@
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React from 'react'
 
 const Portal = () => {
-  const router = useRouter();
+  return (
+    <div>Portal</div>
+  )
+}
 
-  useEffect(() => {
-    router.push("/portal/dashboard");
-  }, [router]);
-
-  return <div></div>;
-};
-
-export default Portal;
+export default Portal

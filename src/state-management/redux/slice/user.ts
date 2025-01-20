@@ -9,7 +9,7 @@ type InitialStateType = {
 };
 
 const initialState: InitialStateType = {
-  userData: {},
+  userData: {email:"amwhiz.com"},
 };
 
 export const userSlice = createSlice({

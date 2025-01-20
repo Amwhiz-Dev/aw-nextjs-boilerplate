@@ -15,7 +15,7 @@ export const sideMenu = [
       {
         label: "Orders",
         alias: "orders",
-        to: "/orders",
+        to: "/",
         activeRoute: ["add-orders", "orders", "edit-orders"],
         children: [],
         group: "store",
@@ -23,7 +23,7 @@ export const sideMenu = [
       {
         label: "Inventory",
         alias: "inventory",
-        to: "/inventory",
+        to: "/",
         activeRoute: ["add-inventory", "inventory", "edit-inventory"],
         children: [],
         group: "store",

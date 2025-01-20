@@ -71,12 +71,9 @@ const RenderSideBar: React.FC = () => {
 
 const SideNavModule: React.FC = () => {
   return (
-    <>
-      {/* <div className={`${style.card} ${expand ? style.expand : style.colapse}`}> */}
       <div className={`${style.card} ${style.expand}`}>
         <RenderSideBar />
       </div>
-    </>
   );
 };
 export default SideNavModule;

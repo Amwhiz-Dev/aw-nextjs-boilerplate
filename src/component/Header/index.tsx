@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { Button } from "primereact/button";
-import style from "@codeBase/src/component/header/header.module.scss";
 import UserIcon from "../icon/User";
+import style from './header.module.scss'
 import SettingIcon from "../icon/Setting";
 import { LoginCurve } from "iconsax-react";
 import { useRouter } from "next/router";
@@ -10,6 +10,7 @@ import { UserIconButton } from "@codeBase/src/interface/userIcon";
 import { getUser } from "@codeBase/src/state-management/redux/slice/user";
 import { RootState } from "@codeBase/src/state-management/redux/store";
 import { useSelector } from "react-redux";
+import LanguageSwitcher from "../LanguageToggle";
 const TriggerUser: React.FC<UserIconButton> = ({ styleCode, ref }) => {
   return (
     <Button className={styleCode} onClick={(e) => ref.current?.toggle(e)}>
@@ -54,13 +55,23 @@ const UserProfile = () => {
 };
 
 const Header: React.FC = () => {
+  const userData = useSelector((state: RootState) => getUser(state));
   return (
     <div className={style.container}>
       <div className={style.logo_container}>
         {/* <Image src={logo} alt="logo" width={106} height={53} /> */}
         LOGO
       </div>
+      <div
+        className={
+          userData?.email
+            ? style.country_holder
+            : style.hidden_module
+        }
+      >
+      <LanguageSwitcher />
       <UserProfile />
+      </div>
     </div>
   );
 };

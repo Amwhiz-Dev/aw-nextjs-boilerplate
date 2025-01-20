@@ -4,12 +4,12 @@
 
 
 :root {
-    --primary-color-bg: #000000;
     --secondary-color-bg: #F1F1F1;
     --menu-color-bg: #EBEBEB;
     --active-color: #FFFFFF;
     --menu-section-bg: #A1A1AA;
     --secondary-text-color: #1A1A1A;
+    --secondary-btn-border-color: #D0D5DD;
     --filled-color: #AFFEBF;
     --valid-color: #00800a;
     --filled-text-color: #014B40;
@@ -21,11 +21,16 @@
     --divide-color: #E7E8EB;
     --email-color: #8C8C8C;
     --teritary-color-bg: #1A1A1A1A;
+    --box-shadow: #6c6c6c42;
+    --focus-ring: 0 0 0 0.2rem #6c6c6c42 !important;
 }
 
 
 body {
     @apply bg-primary;
+}
+.layout-change{
+    direction: rtl;
 }
 
 .overlay-container {
@@ -100,7 +105,7 @@ body {
     }
 
     input {
-        @apply border-[0.5px] border-textSecondary h-[40px] rounded-[8px] px-[8px] bg-transparent mb-[16px];
+        @apply border-[0.5px] border-textSecondary h-[40px] rounded-[8px] px-[8px] bg-transparent mb-[16px] !important ;
     }
 }
 
@@ -178,11 +183,208 @@ body {
             @apply font-[500] text-[15px] leading-[20px] flex gap-[13px] h-[36px] mx-[15px] items-center;
         }
     }
-    .active-menu{
+
+    .active-menu {
         @apply bg-white transition-all;
     }
 }
 
-.group-label{
+.group-label {
     @apply mt-[24px] mx-[32px] text-menuSection text-[14px] font-[500] tracking-[1px] leading-[18px] uppercase cursor-default;
+}
+
+.p-dropdown-item {
+    @apply w-full block !important;
+}
+
+.dropdown-image {
+    @apply flex min-w-[200px] flex-row gap-[10px] !important;
+
+    img {
+        @apply size-[28px] rounded-full;
+    }
+}
+
+.dropdown-image-show {
+    @apply flex min-w-full flex-row gap-[10px] !important;
+
+    img {
+        @apply size-[28px] rounded-full;
+    }
+
+}
+
+.country-dropdown {
+    @apply w-[150px] rounded-full bg-[#292929];
+
+    span {
+        @apply text-white;
+    }
+
+    .p-dropdown-trigger {
+        svg {
+            path {
+                @apply bg-white fill-white;
+            }
+        }
+    }
+}
+.user-table {
+    .p-datatable-wrapper .p-datatable-table .p-datatable-thead tr > th {
+        @apply h-[40px] py-[8px] bg-[#F7F7F7];
+    }
+    .p-datatable-wrapper .p-datatable-table .p-datatable-tbody tr > td {
+        @apply  py-0 text-[14px] max-h-[40px] font-[400] text-[#252C32];
+    }
+    .p-datatable-wrapper .p-datatable-table .p-datatable-tbody tr > td {
+        @apply  border-[1px] border-solid border-white border-t-[#e5e9eb] border-b-[#e5e9eb];
+    }
+    .p-datatable-wrapper .p-datatable-table .p-datatable-tbody tr:hover {
+        @apply  bg-[#f7f7fe] cursor-pointer;
+    }
+}
+.display-password {
+    @apply flex  items-center gap-1.5 w-full relative;
+    .password-text{
+        @apply w-[70%];
+    }
+  }
+  .copy-to-clipboard {
+    @apply opacity-0 transition-opacity duration-[0.3s] ease-[ease];
+  }
+  .copy-to-clipboard i {
+    @apply m-0;
+  }
+  .display-password:hover .copy-to-clipboard {
+    @apply opacity-100;
+  }
+  .password-text {
+    @apply inline-block;
+  }
+  .p-tooltip-text {
+    background-color: #525252 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    box-shadow: none !important;
+    padding: 4px !important;
+  }
+
+  .render-flag {
+      @apply flex gap-[8px] items-center;
+
+      img {
+          @apply size-[20px] rounded-full;
+      }
+  }
+
+  .render-role {
+      @apply bg-menu text-[12px] h-[20px] min-w-[52px] rounded-[16px] text-center px-[4px];
+  }
+.render-active {
+    @apply bg-[#E1FFE7] text-[12px] h-[20px] min-w-[52px] rounded-[16px] text-center text-[#119C2B] px-[4px] !important;
+}
+
+.render-in-active {
+    @apply bg-[#ffe1e1] text-[12px] h-[20px] min-w-[52px] rounded-[16px] text-center text-[#9c1111] px-[4px] !important;
+}
+
+.render-fullName {
+    @apply flex items-center gap-[6px];
+
+    .render-fullName-char {
+        @apply size-[28px] rounded-full text-center align-middle items-center flex justify-around font-[600] leading-[18.62px] text-[14px] shadow-sm;
+    }
+}
+
+.action-menu .p-splitbutton-defaultbutton.p-button.p-component {
+    @apply hidden;
+}
+
+.action-menu .p-splitbutton-menubutton.p-button.p-component.p-button-icon-only.p-button-text.p-button-secondary {
+    @apply rounded-sm;
+}
+
+.action-menu-drop {
+    @apply rounded-[14px] p-2;
+
+    .p-tieredmenu-root-list {
+        @apply rounded-[8px];
+    }
+}
+
+.user-dialog{
+    @apply min-h-full w-[450px] mr-0;
+    .p-dialog-header{
+        @apply pb-0 pt-[24px] px-[24px] ;
+        .header{
+            @apply pb-[8px] mr-[-34px] border-b-menu border-b-[1px] border-solid;
+        }
+    }
+}
+
+.user-dropdown {
+    @apply flex flex-col mt-[20px];
+
+    label {
+        @apply text-[#344054] font-[500] text-[14px] leading-[20px];
+    }
+
+    .p-dropdown {
+        @apply border-[1px] h-[40px] border-solid border-menu mt-[6px] rounded-[8px] shadow-sm shadow-[#1018280D];
+
+        .p-dropdown-label {
+            @apply font-[400] italic text-[14px] text-[#616161] leading-[16px] ml-[10px] text-left align-middle pt-[10px];
+        }
+    }
+}
+
+.user-input{
+    @apply flex flex-col mt-[20px];
+
+    label {
+        @apply text-[#344054] font-[500] text-[14px] leading-[20px];
+    }
+    .p-inputtext,.p-password .p-icon-field .p-password-input  {
+        @apply mt-[6px] border-[1px] h-[40px] border-solid border-menu  font-[400] w-[100%] italic text-[14px] text-[#616161] leading-[16px] text-left align-middle pl-[14px] rounded-[8px] shadow-sm shadow-[#1018280D];
+    }
+    .p-icon-field{
+        @apply w-full;
+    }
+    .p-input-icon{
+        @apply pt-[4.1px]
+    }
+    .generate-pass{
+        label .p-checkbox .p-checkbox-box {
+            @apply  w-[16px] h-[16px]  border-menu border-solid border-[1px];
+        }
+        label .p-checkbox{
+            @apply pt-[3px] !important;
+        }
+        @apply flex justify-between;
+        .active-pass{
+            @apply text-[#005BD3] font-[400] text-[14px] leading-[18px] tracking-[-0.006em] underline underline-offset-1 cursor-pointer;
+        }
+        .in-active-pass{
+            @apply text-[#005BD380] font-[400] text-[14px] leading-[18px] tracking-[-0.006em] underline underline-offset-1 cursor-not-allowed;
+        }
+    }
+}
+
+.dropdown-seleteds{
+    @apply flex gap-[10px] items-center;
+    .active-dot{
+        @apply size-[10px] bg-filledColor rounded-full;
+    }
+    .inactive-dot{
+        @apply size-[10px] bg-error rounded-full;
+    }
+}
+
+.error{
+    @apply text-error italic text-[14px] capitalize pt-[2px]; 
+}
+
+.lang .p-splitbutton-menubutton .pi {
+    @apply text-white !important;
 }

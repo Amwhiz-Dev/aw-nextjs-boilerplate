@@ -1,0 +1,21 @@
+.main_switcher {
+    @apply relative flex items-center px-[7px] py-[5px] hover:bg-[color:var(--hover-color)] hover:rounded-lg;
+  }
+  .main_switcher .language_tooltiptext {
+    @apply whitespace-nowrap invisible bg-primary text-white text-center text-[13px] font-normal absolute z-[11] px-2.5 py-0.5 rounded-lg -left-5 top-10;
+  }
+  .main_switcher:hover .language_tooltiptext {
+    @apply visible;
+  }
+  .main_switcher svg {
+    @apply transition-transform duration-[0.3s] ease-[ease];
+  }
+  .main_switcher:hover svg {
+    @apply scale-110;
+  }
+  .language_btn svg {
+    @apply fill-[var(--svg-color)] stroke-[color:var(--svg-color)];
+  }
+  .sub_switcher {
+    @apply absolute bg-[color:var(--background)] border-[color:var(--border)] text-[color:var(--text-primary)] border shadow-[0_2px_5px_rgba(0,0,0,0.2)] z-[12] w-[100px] flex flex-col gap-3 justify-start items-baseline px-2.5 py-2 rounded-[7px] border-solid right-0 top-10;
+  }

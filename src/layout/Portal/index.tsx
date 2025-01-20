@@ -18,12 +18,6 @@ const HomeLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
       <main className={style.main_layout}>
         {isPortalPath && <SideNavModule />}
         <div className={mainCardClass}>
-          {/* {isPortalPath && (
-            <div
-              className={style.btn}
-              onClick={() => setExpand((prev) => !prev)}
-            />
-          )} */}
           <div>{children}</div>
         </div>
       </main>
