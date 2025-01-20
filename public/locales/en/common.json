@@ -1,0 +1,10 @@
+{
+  "sideNav": {
+    "dashboard": "Dashboard",
+    "store": "STORE",
+    "orders": "Orders",
+    "inventory": "Inventory",
+    "inventoryAdjustment": "Inventory Adjustment",
+    "userManagement": "User Management"
+  }
+}

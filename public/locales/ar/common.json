@@ -1,0 +1,11 @@
+{
+    "sideNav": {
+      "dashboard": "لوحة القيادة",
+      "store": "محل",
+        "orders": "طلباتطلبات",
+        "inventory": "جرد",
+        "inventoryAdjustment": "تعديل المخزون",
+        "userManagement": "إدارة المستخدمين"
+    }
+  }
+  
