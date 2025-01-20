@@ -17,10 +17,31 @@ class TemplateService {
     const urlBuilder = new URLBuilder(path, pathParams, queryParams);
     return urlBuilder.buildURL();
   }
-
+  
+  //without pathParam and queryParam
   public async verifyUser(credentials: { email: string; password: string }) {
     const url = this.buildUrl("/login");
     return this.httpWrapper.request(MapRequest.post, url, credentials);
+  }
+
+  //without queryParam
+  public async createUser(credentials: { email: string; password: string }) {
+    const url = this.buildUrl("/login/:email", { email: credentials.email });
+    return this.httpWrapper.request(MapRequest.post, url, credentials);
+  }
+
+  //without pathParam
+  public async EditUser(credentials: { email: string; password: string }) {
+    const url = this.buildUrl("/login", undefined, {
+      email: credentials.email,
+    });
+    return this.httpWrapper.request(MapRequest.post, url, credentials);
+  }
+
+  //usage of all url builder
+  public async getUserData(email: string, _id: string) {
+    const url = this.buildUrl("/login/:email", { email }, { _id });
+    return this.httpWrapper.request(MapRequest.get, url);
   }
 }
 
