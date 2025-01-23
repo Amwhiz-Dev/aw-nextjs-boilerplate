@@ -42,6 +42,7 @@ const LoginWithPassModule = () => {
           }}
           className={"dashboard-pass-inputs"}
           required={false}
+          isShowfeedback={false}
           label={"Password"}
         />
         <AuthOptions formValue={formValue} setFormValue={setFormValue} />

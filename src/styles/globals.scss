@@ -26,15 +26,12 @@
 }
 
 
-body {
-    @apply bg-primary;
-}
 .layout-change{
     direction: rtl;
 }
 
 .overlay-container {
-    @apply w-[270px] h-[186px];
+    @apply w-[270px];
 
     .p-overlaypanel-content {
         .overlay-profile {

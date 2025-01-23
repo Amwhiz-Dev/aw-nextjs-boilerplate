@@ -1,12 +1,7 @@
 .card {
-    @apply transition-all duration-[20000] ease-in-out pt-[15px];
+    max-height: calc(100dvh - 60px);
+    scrollbar-width:none;
+    @apply transition-all duration-[20000] ease-in-out pt-[15px] bg-[#2195f30c] w-[280px] overflow-y-scroll;
 }
- .expand {
-     width: 280px;
- }
-
- .colapse {
-     width: 60px;
- }
 
 

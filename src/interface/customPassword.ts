@@ -10,4 +10,8 @@ export interface CustomPasswordInputProps {
   disable?: boolean;
   error?: boolean;
   placeHolder?: string;
+  isShowfeedback?:boolean;
+  genaratePassword?:boolean;
+  toggleMask?:boolean;
+  editPassword?:boolean;
 }

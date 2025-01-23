@@ -35,10 +35,6 @@ const UserProfile = () => {
             <div className="email">{userData?.email || "fatima@email.com"}</div>
           </div>
         </div>
-        <div className="set-container">
-          <SettingIcon />
-          <div className="setting-name">settings</div>
-        </div>
         <Button
           className="logout-btn"
           onClick={(e) => {

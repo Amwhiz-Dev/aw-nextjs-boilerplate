@@ -71,7 +71,7 @@ const RenderSideBar: React.FC = () => {
 
 const SideNavModule: React.FC = () => {
   return (
-      <div className={`${style.card} ${style.expand}`}>
+      <div className={style.card}>
         <RenderSideBar />
       </div>
   );

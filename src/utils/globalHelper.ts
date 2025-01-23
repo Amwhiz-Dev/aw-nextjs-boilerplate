@@ -1,5 +1,6 @@
 import { regex } from "@codeBase/src/common/regex";
 import { Severity, Summary } from "@codeBase/src/enum/toastMessage.enum";
+import { charSets } from "../common/charSets";
 
 // It generates the properties for displaying a toast message.
 const generateToastMessage = (
@@ -42,4 +43,26 @@ export const passwordValidation = (password: string) => {
     numeric: regex.numeric.test(password),
     minLength: regex.minLength.test(password),
   };
+};
+
+export const generateRandomPassword = (): string => {
+  const requiredChars = Object.values(charSets).map(
+    (set) => set[Math.floor(Math.random() * set.length)]
+  );
+
+  const allChars = Object.values(charSets).join("");
+  const remainingLength = 8 - requiredChars.length;
+
+  const remainingChars = Array.from(
+    { length: remainingLength },
+    () => allChars[Math.floor(Math.random() * allChars.length)]
+  );
+
+  const passwordArray = [...requiredChars, ...remainingChars];
+  for (let i = passwordArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [passwordArray[i], passwordArray[j]] = [passwordArray[j], passwordArray[i]];
+  }
+
+  return passwordArray.join("");
 };

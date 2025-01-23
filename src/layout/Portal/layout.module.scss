@@ -1,10 +1,10 @@
 .main_layout {
     min-height: calc(100dvh - 60px);
-    @apply bg-menu min-w-full flex;
+    @apply bg-white min-w-full flex !important;
 
     .card {
         min-height: calc(100dvh - 60px);
-        @apply bg-background  relative;
+        @apply bg-white  relative;
 
         .btn {
             @apply bg-red-100 size-[32px] absolute left-[25px] top-[25px] cursor-pointer;
