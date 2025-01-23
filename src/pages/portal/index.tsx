@@ -1,9 +1,12 @@
-import React from 'react'
+import SideNavModule from "@codeBase/src/component/SideNavModule";
+import React from "react";
 
 const Portal = () => {
   return (
-    <div>Portal</div>
-  )
-}
+    <div>
+      portal
+    </div>
+  );
+};
 
-export default Portal
+export default Portal;

@@ -1,5 +1,5 @@
 .container {
-    @apply bg-primary h-[60px] flex w-full justify-between px-[30px] items-center;
+    @apply bg-primary h-[60px] flex w-full justify-between px-[30px] items-center sticky top-0 z-[1];
 
     .logo_container {
         @apply text-white text-[28px] font-bold;
