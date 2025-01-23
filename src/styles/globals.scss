@@ -64,7 +64,7 @@
     }
 
     .logout-btn {
-        @apply h-[36px] min-w-full bg-teritaryColor flex items-center justify-center gap-[8px] mt-[10px];
+        @apply h-[36px] min-w-full bg-[#2195f30c] flex items-center justify-center gap-[8px] mt-[10px] shadow-md;
 
         .label {
             @apply font-[500] text-[14px] leading-[18px] text-textSecondary capitalize rounded-[8px];
