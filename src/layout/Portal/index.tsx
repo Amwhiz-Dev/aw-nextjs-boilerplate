@@ -8,16 +8,12 @@ const HomeLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const pathname = usePathname();
   const isPortalPath = useMemo(() => pathname?.includes("/portal"), [pathname]);
 
-  const mainCardClass = `${style.card} ${
-    isPortalPath ? style.expand : style.width_full
-  }`;
-
   return (
     <div>
       <Header />
       <main className={style.main_layout}>
         {isPortalPath && <SideNavModule />}
-        <div className={mainCardClass}>
+        <div className={style.card}>
           <div>{children}</div>
         </div>
       </main>
