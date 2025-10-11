@@ -1,13 +1,18 @@
-import { toastMessage } from "@codeBase/src/common/toastMessage";
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
-import { HttpHeaders, MapRequest, MimeTypes } from "../enum/request.enum";
+import axios from "axios";
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
+import { toastMessage } from "@template/common/toastMessage";
+import {
+  HttpHeaders,
+  MapRequest,
+  MimeTypes,
+} from "@template/enum/request.enum";
 
 class ApiService {
   private apiClient;
   private baseURI;
 
   constructor() {
-    this.baseURI = process.env.BASE_API_URI ?? "";
+     this.baseURI = process.env.NEXT_PUBLIC_API_BASE_URL || "";
     this.apiClient = axios.create({ baseURL: this.baseURI });
 
     // Interceptor to add headers and handle offline state

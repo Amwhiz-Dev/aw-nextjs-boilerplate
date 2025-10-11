@@ -1,10 +1,11 @@
 {
-  "sideNav": {
-    "dashboard": "Dashboard",
-    "store": "STORE",
-    "orders": "Orders",
-    "inventory": "Inventory",
-    "inventoryAdjustment": "Inventory Adjustment",
-    "userManagement": "User Management"
-  }
+  "welcome": "Welcome",
+  "language": "Language",
+  "dashboard": "Dashboard",
+  "reports": "Reports",
+  "system": "System",
+  "settings": "Settings",
+  "theming": "Theming",
+  "profile": "Profile",
+  "station": "Station"
 }

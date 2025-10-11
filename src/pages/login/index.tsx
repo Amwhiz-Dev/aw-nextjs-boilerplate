@@ -1,12 +1,8 @@
-import { appTitlte } from "@codeBase/src/common/appTitle";
-import LoginWithPassModule from "@codeBase/src/component/LoginPass";
-import React, { useEffect } from "react";
+import AuthModule from "@template/component/Auth";
+import type React from "react";
 
-const LoginWithPassWord = () => {
-  useEffect(() => {
-    document.title = appTitlte.login;
-  }, []);
-  return <LoginWithPassModule />;
+const Login: React.FC = () => {
+  return <AuthModule />;
 };
 
-export default LoginWithPassWord;
+export default Login;

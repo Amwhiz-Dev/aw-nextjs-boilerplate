@@ -1,12 +1,8 @@
-import SideNavModule from "@codeBase/src/component/SideNavModule";
+import Layout from "@template/Layout";
 import React from "react";
 
 const Portal = () => {
-  return (
-    <div>
-      portal
-    </div>
-  );
+	return <Layout>Portal</Layout>;
 };
 
 export default Portal;

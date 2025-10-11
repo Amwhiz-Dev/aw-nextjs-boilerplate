@@ -1,33 +1,24 @@
 export const sideMenu = [
   {
     label: "Dashboard",
-    alias: "dashboard",
-    to: "/",
-    activeRoute: ["add-dashboard", "dashboard", "edit-dashboard"],
-    children: [],
+    isGroupHead: true,
+    children: [{ label: "Reports", to: "/dashboard", active: ["/dashboard"] }],
   },
-
   {
-    label: "store",
-    isGroupHeader: true,
-    hasLink: false,
+    label: "System",
+    isGroupHead: true,
     children: [
-      {
-        label: "Orders",
-        alias: "orders",
-        to: "/",
-        activeRoute: ["add-orders", "orders", "edit-orders"],
-        children: [],
-        group: "store",
-      },
-      {
-        label: "Inventory",
-        alias: "inventory",
-        to: "/",
-        activeRoute: ["add-inventory", "inventory", "edit-inventory"],
-        children: [],
-        group: "store",
-      },
+      { label: "Portal ( Protected )", to: "/portal", active: ["/portal"] },
+      { label: "Language", to: "/language", active: ["/language"] },
+      { label: "Theming", to: "/theming", active: ["/theming"] },
+      { label: "Profile", to: "/profile", active: ["/profile"] },
     ],
+  },
+  {
+    label: "Station",
+    isGroupHead: false,
+    to: "/station",
+    active: ["/station"],
+    children: [],
   },
 ];
