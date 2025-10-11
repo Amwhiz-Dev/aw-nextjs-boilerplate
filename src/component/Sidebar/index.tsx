@@ -1,20 +1,13 @@
-import React from "react";
+import type React from "react";
 import style from "./sidebar.module.scss";
 import Link from "next/link";
 import { Ripple } from "primereact/ripple";
 import { sideMenu } from "@template/common/sideMenu";
 import { useNavigation } from "@template/hooks/useNavigation";
 import { useTranslation } from "react-i18next";
+import type { MenuItem } from "@template/interface/sidenav";
 
-interface MenuItem {
-  label: string;
-  to?: string;
-  isGroupHead?: boolean;
-  active?: string[];
-  children?: MenuItem[];
-}
-
-const Sidebar = () => {
+const Sidebar:React.FC = () => {
   const { pathname } = useNavigation();
   const { t } = useTranslation("common");
   const RenderChildren: React.FC<{ item: MenuItem }> = ({ item }) => {

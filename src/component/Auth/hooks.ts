@@ -4,20 +4,17 @@ import templateService from "@template/services/template.service";
 import { getAlertError } from "@template/utils/generateToast";
 import { parseArray } from "@template/utils/parseArray";
 import { emailRegex } from "@template/utils/pattern/email.regex";
-import { ToastMessage } from "primereact/toast";
+import type { ToastMessage } from "primereact/toast";
 import { useState } from "react";
 import useSWRMutation from "swr/mutation";
 
-interface LoginState {
-  email?: string;
-  password?: string;
-}
+
 
 export const useLogin = (
   toastShow: (message: ToastMessage) => void,
   updation: (data: Record<string, any>) => void
 ) => {
-  const [formData, setFormData] = useState<LoginState>({});
+  const [formData, setFormData] = useState<Record<string,any>>({});
   const { navigate } = useNavigation();
   const {
     trigger,

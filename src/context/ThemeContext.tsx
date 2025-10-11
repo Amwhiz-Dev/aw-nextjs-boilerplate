@@ -6,12 +6,8 @@ import { createContext, useCallback, useContext, useMemo, useRef } from "react";
 import type React from "react";
 import { Toast } from "primereact/toast";
 import type { ToastMessage } from "primereact/toast";
+import type { ThemeContextType } from "@template/interface/store";
 
-export interface ThemeContextType {
-  theme: string;
-  setTheme: (theme: string) => void;
-  toastShow: (message: ToastMessage) => void;
-}
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 

@@ -4,11 +4,8 @@ import { createContext, useContext, useMemo } from "react";
 import type { ReactNode } from "react";
 import { useStoredLanguage } from "@template/hooks/useStoredLanguage";
 import { useLanguageState } from "@template/hooks/useLanguageState";
+import type { LanguageContextProps } from "@template/interface/store";
 
-export interface LanguageContextProps {
-  language: "en" | "fr" | "ar";
-  setLanguage: (lang: "en" | "fr" | "ar") => void;
-}
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(
   undefined
