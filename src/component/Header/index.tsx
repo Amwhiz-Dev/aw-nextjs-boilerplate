@@ -11,47 +11,45 @@ import LanguageSwither from "./LanguageSwitcher";
 import { useNavigation } from "@template/hooks/useNavigation";
 
 const TriggerUser: React.FC<UserIconButton> = ({
-	styleCode,
-	ref,
-	userData,
+  styleCode,
+  ref,
+  userData,
 }) => {
-	return (
-		<Button
-			className={styleCode}
-			onClick={(e) => ref.current?.toggle(e)}
-			label={userData?.fullName?.substring(0, 1) ?? ""}
-		></Button>
-	);
+  return (
+    <Button className={styleCode} onClick={(e) => ref.current?.toggle(e)}>
+      {userData?.fullName?.substring(0, 1) ?? ""}
+    </Button>
+  );
 };
 const Header = () => {
-	const op = useRef<any>(null);
-	const { navigate } = useNavigation();
+  const op = useRef<any>(null);
+  const { navigate } = useNavigation();
 
-	return (
-		<div className={style.container}>
-			<TriggerUser
-				styleCode="user-button-color"
-				ref={op}
-				userData={{ fullName: "A" }}
-			/>
+  return (
+    <div className={style.container}>
+      <TriggerUser
+        styleCode="user-button-color"
+        ref={op}
+        userData={{ fullName: "A" }}
+      />
 
-			<OverlayPanel ref={op} className="overlay-container">
-				<div className="overlay-fields">
-					<LanguageSwither />
-					<ThemeSwitcher />
-				</div>
-				<Button
-					className="logout-btn"
-					onClick={() => {
-						navigate("/login");
-					}}
-				>
-					<LogoutIcon />
-					<div className="label">{SideNav.logout}</div>
-				</Button>
-			</OverlayPanel>
-		</div>
-	);
+      <OverlayPanel ref={op} className="overlay-container">
+        <div className="overlay-fields">
+          <LanguageSwither />
+          <ThemeSwitcher />
+        </div>
+        <Button
+          className="logout-btn"
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          <LogoutIcon />
+          <div className="label">{SideNav.logout}</div>
+        </Button>
+      </OverlayPanel>
+    </div>
+  );
 };
 
 export default Header;

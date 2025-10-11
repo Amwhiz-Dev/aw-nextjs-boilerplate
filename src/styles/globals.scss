@@ -2,73 +2,71 @@
 @import "primeicons/primeicons.css";
 
 :root {
-    --primary-color-light: color-mix(in srgb, var(--primary-color) 5%, white);
-    --primary-color-mid: color-mix(in srgb, var(--primary-color) 50%, white);
-    --menu-grup-light: color-mix(in srgb, var(--primary-color) 60%, black);
+  --primary-color-light: color-mix(in srgb, var(--primary-color) 5%, white);
+  --primary-color-mid: color-mix(in srgb, var(--primary-color) 50%, white);
+  --menu-grup-light: color-mix(in srgb, var(--primary-color) 60%, black);
 }
 
 body {
-    @apply bg-primary-bgLight m-0 p-0;
+  @apply bg-primary-bgLight m-0 p-0;
 }
 
 .themeswitcher-select {
-    @apply min-w-[280px];
+  @apply min-w-[280px];
 }
 
 .theme-color-placeholder {
-    @apply flex gap-2 align-middle items-center;
+  @apply flex gap-2 align-middle items-center;
 
-    .theme-color {
-        @apply size-[12px] rounded-full;
-    }
+  .theme-color {
+    @apply size-[12px] rounded-full;
+  }
 
-    .bootstrap4-light-blue {
-        @apply bg-[#007bff];
-    }
+  .bootstrap4-light-blue {
+    @apply bg-[#007bff];
+  }
 
-    .md-light-deeppurple {
-        @apply bg-[#673AB7];
-    }
+  .md-light-deeppurple {
+    @apply bg-[#673AB7];
+  }
 
-    .mira {
-        @apply bg-[#5e81ac];
-    }
+  .mira {
+    @apply bg-[#5e81ac];
+  }
 
-    .nano {
-        @apply bg-[#1174c0];
-    }
+  .nano {
+    @apply bg-[#1174c0];
+  }
 
-    .tailwind-light {
-        @apply bg-[#4f46e5];
-    }
+  .tailwind-light {
+    @apply bg-[#4f46e5];
+  }
 
-    .lara-light-cyan {
-        @apply bg-[#06b6d4];
-    }
+  .lara-light-cyan {
+    @apply bg-[#06b6d4];
+  }
 
-    .saga-blue {
-        @apply bg-[#2196f3];
-    }
+  .saga-blue {
+    @apply bg-[#2196f3];
+  }
 
-    .lara-light-amber {
-        @apply bg-[#f59e0b];
-    }
+  .lara-light-amber {
+    @apply bg-[#f59e0b];
+  }
 }
+
 .overlay-container {
   @apply w-[320px] pt-3;
 
   .p-overlaypanel-content {
     @apply p-5 !important;
 
-    .overlay-fields{
+    .overlay-fields {
       @apply flex flex-col gap-6;
     }
+
     .overlay-profile {
       @apply flex gap-[14px] border-b-[1px] border-b-gray-50 pb-[16px];
-
-      .user-button-color {
-        @apply capitalize size-[40px] bg-primary flex items-center rounded-lg px-[8px];
-      }
 
       .user-profile {
         @apply w-[80%];
@@ -102,5 +100,9 @@ body {
 }
 
 .p-float-label .p-dropdown {
-  @apply  w-full;
+  @apply w-full;
+}
+
+.user-button-color {
+  @apply capitalize bg-primary flex items-center rounded-lg !size-[40px] justify-center;
 }
