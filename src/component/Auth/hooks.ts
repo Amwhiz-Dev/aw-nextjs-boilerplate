@@ -13,7 +13,10 @@ interface LoginState {
   password?: string;
 }
 
-export const useLogin = (toastShow: (message: ToastMessage) => void) => {
+export const useLogin = (
+  toastShow: (message: ToastMessage) => void,
+  updation: (data: Record<string, any>) => void
+) => {
   const [formData, setFormData] = useState<LoginState>({});
   const { navigate } = useNavigation();
   const {
@@ -53,6 +56,7 @@ export const useLogin = (toastShow: (message: ToastMessage) => void) => {
     } catch (err: any) {
       toastShow(getAlertError(err?.response?.data?.message));
     } finally {
+      updation(formData);
       navigate("/dashboard");
     }
   };

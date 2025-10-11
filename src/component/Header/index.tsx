@@ -9,6 +9,7 @@ import { SideNav } from "@template/enum/sideNav.enum";
 import type { UserIconButton } from "@template/interface/userIcon";
 import LanguageSwither from "./LanguageSwitcher";
 import { useNavigation } from "@template/hooks/useNavigation";
+import { useUserStore } from "@template/store/useCounterStore";
 
 const TriggerUser: React.FC<UserIconButton> = ({
   styleCode,
@@ -24,13 +25,13 @@ const TriggerUser: React.FC<UserIconButton> = ({
 const Header = () => {
   const op = useRef<any>(null);
   const { navigate } = useNavigation();
-
+  const { userData } = useUserStore();
   return (
     <div className={style.container}>
       <TriggerUser
         styleCode="user-button-color"
         ref={op}
-        userData={{ fullName: "A" }}
+        userData={{ fullName: userData?.email }}
       />
 
       <OverlayPanel ref={op} className="overlay-container">
