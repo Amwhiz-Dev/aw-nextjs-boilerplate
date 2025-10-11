@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <div className={style.main_sidenav}>
       <div className={style.logo}>LOGO</div>
-      <nav>
+      <nav className={style.nav_container}>
         {sideMenu.map((group, inx: number) => (
           <ul className={style.list} key={group.label}>
             {group.isGroupHead ? (

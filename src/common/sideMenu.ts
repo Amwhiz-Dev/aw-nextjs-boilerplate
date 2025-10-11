@@ -1,21 +1,21 @@
 export const sideMenu = [
   {
-    label: "Dashboard",
+    label: "dashboard",
     isGroupHead: true,
-    children: [{ label: "Reports", to: "/dashboard", active: ["/dashboard"] }],
+    children: [{ label: "reports", to: "/dashboard", active: ["/dashboard"] }],
   },
   {
-    label: "System",
+    label: "system",
     isGroupHead: true,
     children: [
-      { label: "Portal ( Protected )", to: "/portal", active: ["/portal"] },
-      { label: "Language", to: "/language", active: ["/language"] },
-      { label: "Theming", to: "/theming", active: ["/theming"] },
-      { label: "Profile", to: "/profile", active: ["/profile"] },
+      { label: "portal", to: "/portal", active: ["/portal"] },
+      { label: "language", to: "/language", active: ["/language"] },
+      { label: "theming", to: "/theming", active: ["/theming"] },
+      { label: "profile", to: "/profile", active: ["/profile"] },
     ],
   },
   {
-    label: "Station",
+    label: "station",
     isGroupHead: false,
     to: "/station",
     active: ["/station"],

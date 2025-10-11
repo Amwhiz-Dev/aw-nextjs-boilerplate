@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import i18n from "@template/lib/i18n";
 import { storage } from "@template/utils/storage";
 
@@ -9,19 +9,17 @@ const STORAGE_KEY = "appLanguage";
 export function useLanguageState(initialLang: Language) {
   const [language, setLanguageState] = useState<Language>(initialLang);
 
-  const setLanguage = useCallback(
-    (lang: Language) => {
-      if (lang === language) return;
-      i18n.changeLanguage(lang);
-      setLanguageState(lang);
-      try {
-        storage.set(STORAGE_KEY, lang);
-      } catch {
-        // ignore storage errors
-      }
-    },
-    [language]
-  );
+  const setLanguage = (lang: Language) => {
+    console.log(lang, language);
+    if (lang === language) return;
+    i18n.changeLanguage(lang);
+    setLanguageState(lang);
+    try {
+      storage.set(STORAGE_KEY, lang);
+    } catch {
+      // ignore storage errors
+    }
+  };
 
   // Ensure i18n is synced on mount
   useEffect(() => {
