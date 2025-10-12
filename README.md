@@ -10,9 +10,17 @@ This project follows several key architectural principles to ensure maintainabil
 
 Components are organized by feature rather than file type, keeping related functionality together.
 
+**References:**
+- [Feature-Driven Development](https://en.wikipedia.org/wiki/Feature-driven_development)
+- [React Folder Structure Best Practices](https://www.robinwieruch.de/react-folder-structure/)
+
 ### 2. Co-location Principle
 
 Related files (components, styles, hooks, utilities) are placed in the same directory for better maintainability.
+
+**References:**
+- [Colocation by Kent C. Dodds](https://kentcdodds.com/blog/colocation)
+- [React File Structure](https://reactjs.org/docs/faq-structure.html)
 
 ### 3. Single Responsibility
 
@@ -22,19 +30,28 @@ Each component and module has a clear, focused purpose with minimal dependencies
 
 Components are structured from atomic elements (icons) to complex organisms (layouts).
 
+**References:**
+- [Atomic Design by Brad Frost](https://atomicdesign.bradfrost.com/table-of-contents/)
+- [Atomic Design in React](https://medium.com/@janelle.wg/atomic-design-pattern-how-to-structure-your-react-application-2bb4d9ca5f97)
+
 ### 5. Index File Pattern
 
 Clean imports using `index.tsx` files as entry points for each component directory.
 
 ### 6. SOLID Principles
 
-The codebase adheres to SOLID design principles for maintainable and extensible code:
+The codebase adheres to [SOLID design principles](https://en.wikipedia.org/wiki/SOLID) for maintainable and extensible code:
 
-- **Single Responsibility** - Each component, hook, and service has one clear purpose
-- **Open/Closed** - Components are open for extension through composition, closed for modification
-- **Liskov Substitution** - Service implementations can be substituted without breaking functionality
-- **Interface Segregation** - Specific, focused interfaces rather than large, monolithic ones
-- **Dependency Inversion** - Components depend on abstractions (hooks, stores) not concrete implementations
+- **[Single Responsibility Principle (SRP)](https://en.wikipedia.org/wiki/Single-responsibility_principle)** - Each component, hook, and service has one clear purpose
+- **[Open/Closed Principle (OCP)](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)** - Components are open for extension through composition, closed for modification
+- **[Liskov Substitution Principle (LSP)](https://en.wikipedia.org/wiki/Liskov_substitution_principle)** - Service implementations can be substituted without breaking functionality
+- **[Interface Segregation Principle (ISP)](https://en.wikipedia.org/wiki/Interface_segregation_principle)** - Specific, focused interfaces rather than large, monolithic ones
+- **[Dependency Inversion Principle (DIP)](https://en.wikipedia.org/wiki/Dependency_inversion_principle)** - Components depend on abstractions (hooks, stores) not concrete implementations
+
+**References:**
+- [Clean Code by Robert C. Martin](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+- [SOLID Principles in React](https://konstantinlebedev.com/solid-in-react/)
+- [React Design Patterns](https://reactpatterns.com/)
 
 ### 7. File Naming Consistency
 
@@ -154,13 +171,17 @@ src/
 
 ### Core Framework
 
-- **Next.js 15** - Full-stack React framework with SSR, routing, and optimization
-- **React 19** - Latest React with concurrent features and improved performance
-- **TypeScript** - Type safety and better developer experience
+- **[Next.js 15](https://nextjs.org/)** - Full-stack React framework with SSR, routing, and optimization
+  - [Documentation](https://nextjs.org/docs) | [Learn Next.js](https://nextjs.org/learn)
+- **[React 19](https://react.dev/)** - Latest React with concurrent features and improved performance
+  - [React Docs](https://react.dev/learn) | [React 19 Features](https://react.dev/blog/2024/04/25/react-19)
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety and better developer experience
+  - [TypeScript Handbook](https://www.typescriptlang.org/docs/) | [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
 
 ### State Management
 
-- **Zustand** - Lightweight, simple state management
+- **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight, simple state management
+  - [Documentation](https://docs.pmnd.rs/zustand/getting-started/introduction) | [GitHub](https://github.com/pmndrs/zustand)
   - Minimal boilerplate compared to Redux
   - Excellent TypeScript support
   - No providers needed, direct store access
@@ -168,24 +189,26 @@ src/
 
 ### UI & Styling
 
-- **PrimeReact** - Enterprise-grade component library
-
+- **[PrimeReact](https://primereact.org/)** - Enterprise-grade component library
+  - [Documentation](https://primereact.org/installation/) | [Showcase](https://primereact.org/showcase/)
   - Comprehensive component set
   - Built-in accessibility features
   - Theming system with CSS variables
   - Professional design out of the box
 
-- **SCSS** - Enhanced CSS with variables, nesting, and mixins
-
+- **[SCSS](https://sass-lang.com/)** - Enhanced CSS with variables, nesting, and mixins
+  - [Documentation](https://sass-lang.com/documentation/) | [CSS Modules Guide](https://github.com/css-modules/css-modules)
   - CSS Modules for component-scoped styles
   - Better organization than plain CSS
   - Powerful preprocessing features
 
-- **Tailwind CSS** - Utility-first CSS framework for rapid development
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapid development
+  - [Documentation](https://tailwindcss.com/docs) | [Playground](https://play.tailwindcss.com/)
 
 ### Data Fetching
 
-- **SWR** - Data fetching with caching, revalidation, and error handling
+- **[SWR](https://swr.vercel.app/)** - Data fetching with caching, revalidation, and error handling
+  - [Documentation](https://swr.vercel.app/docs/getting-started) | [Examples](https://swr.vercel.app/examples/basic)
   - Automatic caching and background updates
   - Built-in error and loading states
   - Optimistic updates and mutations
@@ -193,7 +216,8 @@ src/
 
 ### Internationalization
 
-- **react-i18next** - Internationalization framework
+- **[react-i18next](https://react.i18next.com/)** - Internationalization framework
+  - [Documentation](https://react.i18next.com/getting-started) | [i18next Docs](https://www.i18next.com/)
   - Dynamic language switching
   - Namespace organization
   - Lazy loading of translations
@@ -201,7 +225,8 @@ src/
 
 ### HTTP Client
 
-- **Axios** - Promise-based HTTP client
+- **[Axios](https://axios-http.com/)** - Promise-based HTTP client
+  - [Documentation](https://axios-http.com/docs/intro) | [GitHub](https://github.com/axios/axios)
   - Request/response interceptors
   - Automatic JSON parsing
   - Better error handling than fetch
@@ -209,7 +234,8 @@ src/
 
 ### Development Tools
 
-- **Biome** - Fast linter and formatter
+- **[Biome](https://biomejs.dev/)** - Fast linter and formatter
+  - [Documentation](https://biomejs.dev/guides/getting-started/) | [Configuration](https://biomejs.dev/reference/configuration/)
   - Faster than ESLint + Prettier combination
   - Single tool for linting and formatting
   - Better performance and consistency
@@ -357,3 +383,38 @@ store/
 ## Deployment
 
 Deploy easily on [Vercel](https://vercel.com/new) or any platform supporting Next.js applications.
+
+- [Vercel Deployment Guide](https://nextjs.org/docs/deployment)
+- [Next.js Deployment Options](https://nextjs.org/docs/pages/building-your-application/deploying)
+
+## References & Further Reading
+
+### Architecture & Design Patterns
+- [Clean Architecture by Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [React Design Patterns](https://reactpatterns.com/)
+- [Component Driven Development](https://www.componentdriven.org/)
+- [Atomic Design Methodology](https://atomicdesign.bradfrost.com/chapter-2/)
+
+### React Best Practices
+- [React Official Documentation](https://react.dev/)
+- [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
+- [Kent C. Dodds Blog](https://kentcdodds.com/blog) - React patterns and best practices
+- [React Folder Structure](https://www.robinwieruch.de/react-folder-structure/)
+
+### Next.js Resources
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js Learn Course](https://nextjs.org/learn)
+- [Next.js Examples](https://github.com/vercel/next.js/tree/canary/examples)
+
+### Code Quality & Standards
+- [SOLID Principles](https://en.wikipedia.org/wiki/SOLID)
+- [Clean Code Principles](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29)
+- [JavaScript Style Guide by Airbnb](https://github.com/airbnb/javascript)
+- [TypeScript Style Guide](https://ts.dev/style/)
+
+### Tools & Libraries
+- [Zustand Documentation](https://docs.pmnd.rs/zustand/getting-started/introduction)
+- [PrimeReact Components](https://primereact.org/showcase/)
+- [SWR Data Fetching](https://swr.vercel.app/)
+- [react-i18next Guide](https://react.i18next.com/getting-started)
+- [Biome Toolchain](https://biomejs.dev/)
