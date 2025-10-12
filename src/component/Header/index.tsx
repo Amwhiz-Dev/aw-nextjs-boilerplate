@@ -4,12 +4,12 @@ import style from "./header.module.scss";
 import { Button } from "primereact/button";
 import { OverlayPanel } from "primereact/overlaypanel";
 import ThemeSwitcher from "./ThemeSwitcher";
-import LogoutIcon from "../icons/LogoutIcon";
 import { SideNav } from "@template/enum/sideNav.enum";
 import type { UserIconButton } from "@template/interface/userIcon";
 import LanguageSwither from "./LanguageSwitcher";
 import { useNavigation } from "@template/hooks/useNavigation";
 import { useUserStore } from "@template/store/useCounterStore";
+import SignoutIcon from "../icons/Signout";
 
 const TriggerUser: React.FC<UserIconButton> = ({
   styleCode,
@@ -45,7 +45,7 @@ const Header = () => {
             navigate("/login");
           }}
         >
-          <LogoutIcon />
+          <SignoutIcon />
           <div className="label">{SideNav.logout}</div>
         </Button>
       </OverlayPanel>
