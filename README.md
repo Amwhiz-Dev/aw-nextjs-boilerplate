@@ -38,35 +38,65 @@ The codebase adheres to SOLID design principles for maintainable and extensible 
 
 ### 7. File Naming Consistency
 
-Consistent naming conventions across the entire codebase:
+Strict naming conventions ensure predictability and maintainability:
 
-- **Components** - PascalCase with `index.tsx` as main export (`Header/index.tsx`)
-- **Hooks** - camelCase starting with `use` (`useHeader.ts`, `useNavigation.ts`)
-- **Interfaces** - PascalCase with `.interface.ts` suffix (`header.interface.ts`)
-- **Enums** - camelCase with `.enum.ts` suffix (`sideNav.enum.ts`)
-- **Services** - camelCase with `.service.ts` suffix (`template.service.ts`)
-- **Styles** - kebab-case with `.module.scss` suffix (`header.module.scss`)
-- **Utils** - camelCase descriptive names (`generateToast.ts`, `parseArray.ts`)
-- **Constants** - camelCase descriptive names (`appTitle.ts`, `language.ts`)
+#### **Component Files**
+- **Folders** - PascalCase (`Auth/`, `Header/`, `Sidebar/`)
+- **Main Component** - Always `index.tsx` as entry point
+- **Styles** - Match folder case + `.module.scss` (`Auth.module.scss`)
+- **Hooks** - `use` + ComponentName + `.ts` (`useAuth.ts`, `useHeader.ts`)
+- **Sub-components** - PascalCase (`LanguageSwitcher.tsx`)
+
+#### **Feature Files**
+- **Interfaces** - camelCase + `.interface.ts` (`header.interface.ts`)
+- **Enums** - camelCase + `.enum.ts` (`sideNav.enum.ts`)
+- **Services** - camelCase + `.service.ts` (`template.service.ts`)
+- **Stores** - `use` + FeatureName + `Store.ts` (`useUserStore.ts`)
+
+#### **Utility Files**
+- **Hooks** - `use` + FeatureName + `.ts` (`useNavigation.ts`)
+- **Utils** - camelCase descriptive (`generateToast.ts`, `url.builder.ts`)
+- **Constants** - camelCase descriptive (`appTitle.ts`, `language.ts`)
+- **Lib Configs** - camelCase descriptive (`i18n.ts` - third-party setups)
+
+#### **Consistency Rules**
+1. **Case Matching** - CSS modules always match their component folder case
+2. **Descriptive Names** - File names clearly indicate their purpose
+3. **Suffix Conventions** - Use consistent suffixes for file types
+4. **No Abbreviations** - Use full, clear names over shortened versions
 
 ## Project Structure
+
+### Directory Purpose Guide
+- **`component/`** - Reusable UI components with co-located styles and hooks
+- **`pages/`** - Next.js routing pages and API endpoints
+- **`hooks/`** - Custom React hooks for shared logic
+- **`utils/`** - Pure utility functions and helper classes
+- **`lib/`** - Third-party library configurations and setups
+- **`services/`** - API service classes and HTTP client logic
+- **`store/`** - Zustand state management stores
+- **`interface/`** - TypeScript type definitions and interfaces
+- **`enum/`** - TypeScript enums for constants
+- **`context/`** - React context providers
+- **`common/`** - Shared constants and configuration objects
+- **`styles/`** - Global styles and theme definitions
 
 ```
 src/
 ├── component/                    # Reusable UI components
 │   ├── Auth/                    # Authentication components
 │   │   ├── index.tsx
-│   │   ├── auth.module.scss
-│   │   └── hooks.ts
+│   │   ├── Auth.module.scss
+│   │   └── useAuth.ts
 │   ├── Header/                  # Header with user controls
 │   │   ├── index.tsx
-│   │   ├── header.module.scss
+│   │   ├── Header.module.scss
 │   │   ├── LanguageSwitcher.tsx
 │   │   ├── ThemeSwitcher.tsx
 │   │   └── useHeader.ts
 │   ├── Sidebar/                 # Navigation sidebar
 │   │   ├── index.tsx
-│   │   └── sidebar.module.scss
+│   │   └── Sidebar.module.scss
 │   └── icons/                   # SVG icon components
 │       ├── index.ts
 │       └── SignoutIcon.tsx
@@ -86,15 +116,18 @@ src/
 │   ├── useStoredTheme.ts
 │   └── useLanguageState.ts
 ├── interface/                   # TypeScript interfaces
+│   ├── authOption.interface.ts
 │   ├── header.interface.ts
+│   ├── sidenav.interface.ts
 │   ├── store.interface.ts
-│   └── userData.interface.ts
+│   ├── url.builder.interface.ts
+│   ├── userData.interface.ts
+│   └── userIcon.interface.ts
 ├── Layout/                      # Layout components
 │   ├── index.tsx
-│   └── layout.module.scss
-├── lib/                         # Third-party configurations
-│   ├── i18n.ts
-│   └── url.builder.ts
+│   └── Layout.module.scss
+├── lib/                         # Third-party library configurations
+│   └── i18n.ts
 ├── pages/                       # Next.js pages (routing)
 │   ├── dashboard/
 │   ├── login/
@@ -103,13 +136,18 @@ src/
 │   ├── api.service.ts
 │   └── template.service.ts
 ├── store/                       # Zustand state management
-│   └── useCounterStore.ts
+│   └── useUserStore.ts
 ├── styles/                      # Global styles and themes
 │   └── globals.scss
-└── utils/                       # Helper functions
+└── utils/                       # Helper functions and utilities
     ├── pattern/
+    │   └── email.regex.ts
     ├── generateToast.ts
-    └── parseArray.ts
+    ├── parseArray.ts
+    ├── storage.ts
+    ├── themeLoader.ts
+    ├── isBrowser.ts
+    └── url.builder.ts
 ```
 
 ## Technology Stack & Rationale
@@ -251,20 +289,58 @@ interface IAuthService {
 
 ## File Naming Standards
 
-### Strict Naming Conventions
-- **Components**: `ComponentName/index.tsx` + `componentName.module.scss`
-- **Hooks**: `useFeatureName.ts` (always start with 'use')
-- **Interfaces**: `featureName.interface.ts` (descriptive + .interface suffix)
-- **Enums**: `featureName.enum.ts` (descriptive + .enum suffix)
-- **Services**: `featureName.service.ts` (descriptive + .service suffix)
-- **Utils**: `descriptiveName.ts` (camelCase, descriptive)
-- **Constants**: `descriptiveName.ts` (camelCase, clear purpose)
+### Naming Convention Examples
+
+#### ✅ **Correct Patterns**
+```
+Auth/
+├── index.tsx                    # Main component export
+├── Auth.module.scss            # Matches folder case
+├── useAuth.ts                  # Component-specific hook
+└── AuthForm.tsx               # Sub-component (if needed)
+
+interface/
+├── auth.interface.ts           # Feature interfaces
+├── user.interface.ts           # Clear, descriptive names
+└── api.interface.ts           # Grouped by domain
+
+store/
+├── useUserStore.ts            # Feature-specific store
+├── useAuthStore.ts            # Clear responsibility
+└── useThemeStore.ts           # Single concern
+```
+
+#### ❌ **Incorrect Patterns**
+```
+auth/                          # Should be PascalCase
+├── index.tsx
+├── auth.scss                  # Missing .module, wrong case
+└── hooks.ts                   # Too generic
+
+interface/
+├── user.ts                    # Missing .interface suffix
+└── types.ts                   # Too generic
+
+store/
+├── counter.ts                 # Doesn't match actual usage
+└── globalStore.ts             # Too broad, violates SRP
+```
 
 ### Folder Organization Rules
 - **Feature-based grouping** - Related files stay together
 - **Index files** - Always use `index.tsx` for main component exports
 - **Co-location** - Styles, hooks, and components in same directory
 - **Consistent depth** - Avoid deeply nested folder structures
+- **Case consistency** - File names match their folder case
+- **Predictable patterns** - Developers can find files without searching
+
+### Benefits of This Structure
+- **Developer Velocity** - No time wasted searching for files
+- **Onboarding Speed** - New developers understand patterns immediately
+- **Refactoring Safety** - Consistent imports reduce breaking changes
+- **Scalability** - Pattern works for projects of any size
+- **Tool Integration** - IDEs and build tools work better with consistent naming
+- **Code Reviews** - Easier to spot inconsistencies and violations
 
 ## Contributing
 

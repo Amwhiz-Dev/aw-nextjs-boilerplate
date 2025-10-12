@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useNavigation } from "@template/hooks/useNavigation";
-import { useUserStore } from "@template/store/useCounterStore";
+import { useUserStore } from "@template/store/useUserStore";
 
 export const useHeader = () => {
   const overlayRef = useRef<any>(null);

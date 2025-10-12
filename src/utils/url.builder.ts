@@ -1,4 +1,7 @@
-import type { PathParams, QueryParams } from "@template/interface/url.builder";
+import type {
+  PathParams,
+  QueryParams,
+} from "@template/interface/url.builder.interface";
 
 class URLBuilder {
   private baseUrl: string;

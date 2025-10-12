@@ -1,5 +1,5 @@
 import type React from "react";
-import style from "./sidebar.module.scss";
+import style from "./Sidebar.module.scss";
 import Link from "next/link";
 import { Ripple } from "primereact/ripple";
 import { sideMenu } from "@template/common/sideMenu";

@@ -1,5 +1,5 @@
 import type React from "react";
-import style from "./header.module.scss";
+import style from "./Header.module.scss";
 import { Button } from "primereact/button";
 import { OverlayPanel } from "primereact/overlaypanel";
 import ThemeSwitcher from "./ThemeSwitcher";

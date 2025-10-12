@@ -1,10 +1,10 @@
 import type React from "react";
-import style from "@template/component/Auth/auth.module.scss";
+import style from "@template/component/Auth/Auth.module.scss";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { useLogin } from "./hooks";
+import { useLogin } from "./useAuth";
 import { useThemeContext } from "@template/context/ThemeContext";
-import { useUserStore } from "@template/store/useCounterStore";
+import { useUserStore } from "@template/store/useUserStore";
 
 const AuthModule: React.FC = () => {
   const { toastShow } = useThemeContext();
