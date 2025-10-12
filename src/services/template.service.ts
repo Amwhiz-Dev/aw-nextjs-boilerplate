@@ -4,14 +4,10 @@ import ApiService from "./api.service";
 import URLBuilder from "@template/lib/url.builder";
 
 class TemplateService extends ApiService {
-  constructor() {
-    super();
-  }
-
   private buildUrl(
     path: string,
     pathParams?: PathParams,
-    queryParams?: QueryParams
+    queryParams?: QueryParams,
   ): string {
     const urlBuilder = new URLBuilder(path, pathParams, queryParams);
     return urlBuilder.buildURL();

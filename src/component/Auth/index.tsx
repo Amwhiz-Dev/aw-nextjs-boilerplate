@@ -9,8 +9,10 @@ import { useUserStore } from "@template/store/useCounterStore";
 const AuthModule: React.FC = () => {
   const { toastShow } = useThemeContext();
   const { updation } = useUserStore();
-  const { formData, handleChange, handleSubmit, isMutating } =
-    useLogin(toastShow,updation);
+  const { formData, handleChange, handleSubmit, isMutating } = useLogin(
+    toastShow,
+    updation,
+  );
   return (
     <div className={style.main_container}>
       <div className={style.login_box}>

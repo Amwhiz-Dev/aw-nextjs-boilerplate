@@ -8,13 +8,11 @@ import type { ToastMessage } from "primereact/toast";
 import { useState } from "react";
 import useSWRMutation from "swr/mutation";
 
-
-
 export const useLogin = (
   toastShow: (message: ToastMessage) => void,
-  updation: (data: Record<string, any>) => void
+  updation: (data: Record<string, any>) => void,
 ) => {
-  const [formData, setFormData] = useState<Record<string,any>>({});
+  const [formData, setFormData] = useState<Record<string, any>>({});
   const { navigate } = useNavigation();
   const {
     trigger,
@@ -22,7 +20,7 @@ export const useLogin = (
     data,
     error: swrError,
   } = useSWRMutation(SERVICE_KEY.LOGIN, () =>
-    templateService.verifyUser(formData)
+    templateService.verifyUser(formData),
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

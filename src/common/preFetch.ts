@@ -1,4 +1,1 @@
-export const preFetch = [
-  "/login",
-  "/dashboard",
-];
+export const preFetch = ["/login", "/dashboard"];

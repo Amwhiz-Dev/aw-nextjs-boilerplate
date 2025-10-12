@@ -11,7 +11,7 @@ const generateToastMessage = (
   severity: Severity,
   summary: Summary,
   detail: string,
-  sticky: boolean = false
+  sticky: boolean = false,
 ): ToastMessageProps => {
   if (!sticky) return { severity, summary, detail, life: 3000 };
   return { severity, summary, detail, sticky };
@@ -23,7 +23,7 @@ export const getAlertSuccess = (details: string, sticky = false) => {
     Severity.SUCCESS,
     Summary.SUCCESS,
     details,
-    sticky
+    sticky,
   );
 };
 

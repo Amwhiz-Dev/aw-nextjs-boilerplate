@@ -5,22 +5,23 @@ import { Ripple } from "primereact/ripple";
 import { sideMenu } from "@template/common/sideMenu";
 import { useNavigation } from "@template/hooks/useNavigation";
 import { useTranslation } from "react-i18next";
-import type { MenuItem } from "@template/interface/sidenav";
+import type { MenuItem } from "@template/interface/sidenav.interface";
 
-const Sidebar:React.FC = () => {
+const Sidebar: React.FC = () => {
   const { pathname } = useNavigation();
   const { t } = useTranslation("common");
   const RenderChildren: React.FC<{ item: MenuItem }> = ({ item }) => {
-    const isRead = item?.active?.includes(pathname)
-    return(
-    <Link
-      href={item.to ?? "#"}
-      className={`${style.items} ${ isRead? style.item_active : ""}`}
-    >
-      <span>{t(item.label)}</span>
-      <Ripple />
-    </Link>
-  )};
+    const isRead = item?.active?.includes(pathname);
+    return (
+      <Link
+        href={item.to ?? "#"}
+        className={`${style.items} ${isRead ? style.item_active : ""}`}
+      >
+        <span>{t(item.label)}</span>
+        <Ripple />
+      </Link>
+    );
+  };
   return (
     <div className={style.main_sidenav}>
       <div className={style.logo}>LOGO</div>

@@ -1,7 +1,7 @@
-const baseName = "Boiler Template";
+const appName = process.env.NEXT_PUBLIC_APP_NAME;
 
 export const appTitlte = {
-  dashboard: `${baseName} - Dashboard`,
-  login: `${baseName} - Login`,
-  settings: `${baseName} - Settings`,
+  dashboard: `${appName} - Dashboard`,
+  login: `${appName} - Login`,
+  settings: `${appName} - Settings`,
 };

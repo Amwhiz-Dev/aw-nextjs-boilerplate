@@ -2,7 +2,6 @@ import { themeSwitcherColor } from "@template/common/themeSwitcher";
 import { useThemeContext } from "@template/context/ThemeContext";
 import { Dropdown } from "primereact/dropdown";
 import { FloatLabel } from "primereact/floatlabel";
-import React from "react";
 
 const ThemeSwitcher = () => {
   const { setTheme, theme } = useThemeContext();

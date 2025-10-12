@@ -2,7 +2,6 @@ import { languages } from "@template/common/language";
 import { useLanguageContext } from "@template/context/LanguageContext";
 import { Dropdown } from "primereact/dropdown";
 import { FloatLabel } from "primereact/floatlabel";
-import React from "react";
 
 const LanguageSwither = () => {
   const { language, setLanguage } = useLanguageContext();

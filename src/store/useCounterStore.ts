@@ -1,7 +1,5 @@
-import type { UserState } from "@template/interface/store";
+import type { UserState } from "@template/interface/store.interface";
 import { create } from "zustand";
-
-
 
 export const useUserStore = create<UserState>((set) => ({
   userData: {},

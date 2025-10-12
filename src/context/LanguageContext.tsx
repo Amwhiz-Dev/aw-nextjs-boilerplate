@@ -4,11 +4,10 @@ import { createContext, useContext, useMemo } from "react";
 import type { ReactNode } from "react";
 import { useStoredLanguage } from "@template/hooks/useStoredLanguage";
 import { useLanguageState } from "@template/hooks/useLanguageState";
-import type { LanguageContextProps } from "@template/interface/store";
-
+import type { LanguageContextProps } from "@template/interface/store.interface";
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -17,7 +16,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo(
     () => ({ language, setLanguage }),
-    [language, setLanguage]
+    [language, setLanguage],
   );
 
   return (

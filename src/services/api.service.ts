@@ -12,7 +12,7 @@ class ApiService {
   private baseURI;
 
   constructor() {
-     this.baseURI = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+    this.baseURI = process.env.NEXT_PUBLIC_API_BASE_URL || "";
     this.apiClient = axios.create({ baseURL: this.baseURI });
 
     // Interceptor to add headers and handle offline state
@@ -28,7 +28,7 @@ class ApiService {
       },
       (error: AxiosError): Promise<AxiosError> => {
         return Promise.reject(error);
-      }
+      },
     );
   }
 
@@ -46,7 +46,7 @@ class ApiService {
   public async request(
     method: MapRequest,
     url: string,
-    data?: any
+    data?: any,
   ): Promise<any> {
     try {
       let response: AxiosResponse;

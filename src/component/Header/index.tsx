@@ -1,50 +1,44 @@
-import { useRef } from "react";
 import type React from "react";
 import style from "./header.module.scss";
 import { Button } from "primereact/button";
 import { OverlayPanel } from "primereact/overlaypanel";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { SideNav } from "@template/enum/sideNav.enum";
-import type { UserIconButton } from "@template/interface/userIcon";
 import LanguageSwither from "./LanguageSwitcher";
-import { useNavigation } from "@template/hooks/useNavigation";
-import { useUserStore } from "@template/store/useCounterStore";
-import SignoutIcon from "../icons/Signout";
+import { SignoutIcon } from "../icons";
+import { useHeader } from "./useHeader";
+import type { UserButtonProps } from "@template/interface/header.interface";
 
-const TriggerUser: React.FC<UserIconButton> = ({
-  styleCode,
-  ref,
-  userData,
+// Single responsibility: render user button
+const UserButton: React.FC<UserButtonProps> = ({
+  className,
+  onClick,
+  children,
 }) => {
   return (
-    <Button className={styleCode} onClick={(e) => ref.current?.toggle(e)}>
-      {userData?.fullName?.substring(0, 1) ?? ""}
+    <Button className={className} onClick={onClick}>
+      {children}
     </Button>
   );
 };
+
+// Single responsibility: render header UI
 const Header = () => {
-  const op = useRef<any>(null);
-  const { navigate } = useNavigation();
-  const { userData } = useUserStore();
+  const { overlayRef, handleLogout, toggleOverlay, getUserInitial } =
+    useHeader();
+
   return (
     <div className={style.container}>
-      <TriggerUser
-        styleCode="user-button-color"
-        ref={op}
-        userData={{ fullName: userData?.email }}
-      />
+      <UserButton className="user-button-color" onClick={toggleOverlay}>
+        {getUserInitial()}
+      </UserButton>
 
-      <OverlayPanel ref={op} className="overlay-container">
+      <OverlayPanel ref={overlayRef} className="overlay-container">
         <div className="overlay-fields">
           <LanguageSwither />
           <ThemeSwitcher />
         </div>
-        <Button
-          className="logout-btn"
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
+        <Button className="logout-btn" onClick={handleLogout}>
           <SignoutIcon />
           <div className="label">{SideNav.logout}</div>
         </Button>
