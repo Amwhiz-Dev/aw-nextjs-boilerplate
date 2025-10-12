@@ -4,7 +4,7 @@ import style from "./header.module.scss";
 import { Button } from "primereact/button";
 import { OverlayPanel } from "primereact/overlaypanel";
 import ThemeSwitcher from "./ThemeSwitcher";
-import LogoutIcon from "../icons/logout";
+import LogoutIcon from "../icons/LogoutIcon";
 import { SideNav } from "@template/enum/sideNav.enum";
 import type { UserIconButton } from "@template/interface/userIcon";
 import LanguageSwither from "./LanguageSwitcher";
