@@ -1,5 +1,5 @@
 import Header from "@template/component/Header";
-import Sidebar from "@template/component/SideBars";
+import Sidebar from "@template/component/SideBar";
 import type React from "react";
 import style from "./Layout.module.scss";
 

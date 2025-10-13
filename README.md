@@ -111,9 +111,9 @@ src/
 │   │   ├── LanguageSwitcher.tsx
 │   │   ├── ThemeSwitcher.tsx
 │   │   └── useHeader.ts
-│   ├── Sidebar/                 # Navigation sidebar
+│   ├── SideBar/                 # Navigation sidebar
 │   │   ├── index.tsx
-│   │   └── Sidebar.module.scss
+│   │   └── SideBar.module.scss
 │   └── icons/                   # SVG icon components
 │       ├── index.ts
 │       └── SignoutIcon.tsx
@@ -127,7 +127,7 @@ src/
 ├── enum/                        # TypeScript enums
 │   ├── request.enum.ts
 │   ├── service.enum.ts
-│   └── sidebar.enum.ts
+│   └── sideBar.enum.ts
 ├── hooks/                       # Custom React hooks
 │   ├── useNavigation.ts
 │   ├── useStoredTheme.ts
@@ -135,7 +135,7 @@ src/
 ├── interface/                   # TypeScript interfaces
 │   ├── authOption.interface.ts
 │   ├── header.interface.ts
-│   ├── sidebar.interface.ts
+│   ├── sideBar.interface.ts
 │   ├── store.interface.ts
 │   ├── url.builder.interface.ts
 │   ├── userData.interface.ts

@@ -1,13 +1,13 @@
 import type React from "react";
-import style from "./Sidebar.module.scss";
+import style from "./SideBar.module.scss";
 import Link from "next/link";
 import { Ripple } from "primereact/ripple";
 import { sideMenu } from "@template/common/sideMenu";
 import { useNavigation } from "@template/hooks/useNavigation";
 import { useTranslation } from "react-i18next";
-import type { MenuItem } from "@template/interface/sideBars.interface";
+import type { MenuItem } from "@template/interface/sideBar.interface";
 
-const SideBars: React.FC = () => {
+const SideBar: React.FC = () => {
   const { pathname } = useNavigation();
   const { t } = useTranslation("common");
   const RenderChildren: React.FC<{ item: MenuItem }> = ({ item }) => {
@@ -56,4 +56,4 @@ const SideBars: React.FC = () => {
   );
 };
 
-export default SideBars;
+export default SideBar;
