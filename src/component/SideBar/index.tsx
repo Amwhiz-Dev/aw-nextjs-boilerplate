@@ -1,4 +1,5 @@
 import type React from "react";
+import { useEffect, useState } from "react";
 import style from "./SideBar.module.scss";
 import Link from "next/link";
 import { Ripple } from "primereact/ripple";
@@ -10,8 +11,14 @@ import type { MenuItem } from "@template/interface/sideBar.interface";
 const SideBar: React.FC = () => {
   const { pathname } = useNavigation();
   const { t } = useTranslation("common");
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const RenderChildren: React.FC<{ item: MenuItem }> = ({ item }) => {
-    const isRead = item?.active?.includes(pathname);
+    const isRead = isClient && item?.active?.includes(pathname);
     return (
       <Link
         href={item.to ?? "#"}

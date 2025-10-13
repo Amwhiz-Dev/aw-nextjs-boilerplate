@@ -20,5 +20,6 @@ export function useNavigation() {
     goBack,
     pathname: router.pathname,
     query: router.query,
+    preFetch: router.prefetch,
   };
 }

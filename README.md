@@ -118,9 +118,11 @@ src/
 │       ├── index.ts
 │       └── SignoutIcon.tsx
 ├── common/                      # Shared constants and configurations
-│   ├── appTitle.ts
-│   ├── language.ts
-│   └── sideMenu.ts
+│   ├── appTitle.ts                 # Application titles
+│   ├── language.ts                 # Language configurations
+│   ├── preFetch.ts                 # Route prefetch paths
+│   ├── sideMenu.ts                 # Navigation menu structure
+│   └── themeSwitcher.ts            # Available theme configurations
 ├── context/                     # React context providers
 │   ├── LanguageContext.tsx
 │   └── ThemeContext.tsx
@@ -129,9 +131,11 @@ src/
 │   ├── service.enum.ts
 │   └── sideBar.enum.ts
 ├── hooks/                       # Custom React hooks
-│   ├── useNavigation.ts
-│   ├── useStoredTheme.ts
-│   └── useLanguageState.ts
+│   ├── useNavigation.ts            # Router navigation with prefetch
+│   ├── useStoredTheme.ts           # Theme persistence (SSR-safe)
+│   ├── useStoredLanguage.ts        # Language persistence (SSR-safe)
+│   ├── useThemeState.ts            # Theme state management
+│   └── useLanguageState.ts         # Language state management
 ├── interface/                   # TypeScript interfaces
 │   ├── authOption.interface.ts
 │   ├── header.interface.ts
@@ -150,21 +154,21 @@ src/
 │   ├── login/
 │   └── _app.tsx
 ├── services/                    # API service functions
-│   ├── api.service.ts
-│   └── template.service.ts
+│   ├── httpClient.service.ts       # HTTP client with interceptors
+│   └── template.service.ts         # Template-specific API calls
 ├── store/                       # Zustand state management
 │   └── useUserStore.ts
 ├── styles/                      # Global styles and themes
 │   └── globals.scss
 └── utils/                       # Helper functions and utilities
     ├── pattern/
-    │   └── email.regex.ts
-    ├── generateToast.ts
-    ├── parseArray.ts
-    ├── storage.ts
-    ├── themeLoader.ts
-    ├── isBrowser.ts
-    └── url.builder.ts
+    │   └── email.regex.ts          # Email validation patterns
+    ├── generateToast.ts            # Toast notification helper
+    ├── parseArray.ts               # Array parsing utilities
+    ├── storage.ts                  # LocalStorage wrapper (SSR-safe)
+    ├── themeLoader.ts              # Dynamic theme loading
+    ├── isBrowser.ts                # Browser environment detection
+    └── url.builder.ts              # URL construction helper
 ```
 
 ## Technology Stack & Rationale
@@ -225,12 +229,12 @@ src/
 
 ### HTTP Client
 
-- **[Axios](https://axios-http.com/)** - Promise-based HTTP client
+- **[Axios](https://axios-http.com/)** - Promise-based HTTP client with custom service layer
   - [Documentation](https://axios-http.com/docs/intro) | [GitHub](https://github.com/axios/axios)
-  - Request/response interceptors
-  - Automatic JSON parsing
-  - Better error handling than fetch
-  - Request cancellation support
+  - Request/response interceptors for authentication and error handling
+  - Automatic JSON parsing and offline detection
+  - Centralized API service architecture
+  - Type-safe request/response handling
 
 ### Development Tools
 
@@ -239,6 +243,32 @@ src/
   - Faster than ESLint + Prettier combination
   - Single tool for linting and formatting
   - Better performance and consistency
+
+## Recent Improvements & Optimizations
+
+### SSR & Hydration Fixes
+- **Fixed hydration mismatches** - Eliminated server/client rendering inconsistencies
+- **Browser-safe hooks** - All localStorage/browser APIs properly guarded with `isBrowser()` checks
+- **Client-side state tracking** - Components render consistently across SSR and client hydration
+- **Performance optimization** - Reduced initial page load flashes and console errors
+
+### Theme System Enhancements
+- **Centralized theme configuration** - Single source of truth in `themeSwitcher.ts`
+- **Dynamic theme loading** - Improved performance with default theme preloading
+- **Fallback handling** - Graceful degradation when themes fail to load
+- **Type-safe theme switching** - Full TypeScript support for theme operations
+
+### Code Quality Improvements
+- **Service layer refactoring** - Renamed `api.service.ts` to `httpClient.service.ts` for clarity
+- **Consistent naming conventions** - Aligned all file names with project standards
+- **Removed unused code** - Cleaned up middleware and simplified component logic
+- **Enhanced error handling** - Better error boundaries and user feedback
+
+### Architecture Optimizations
+- **Prefetch integration** - Automatic route prefetching for better navigation performance
+- **Context provider optimization** - Reduced re-renders with proper memoization
+- **Hook composition** - Better separation of concerns in custom hooks
+- **Import organization** - Cleaner import statements and dependency management
 
 ## Getting Started
 
@@ -274,12 +304,13 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 ## Key Features
 
 - **Responsive Design** - Mobile-first approach with PrimeReact components
-- **Theme Support** - Light/dark theme switching with CSS variables
-- **Internationalization** - Multi-language support with dynamic switching
+- **Theme Support** - Dynamic theme switching with centralized configuration
+- **Internationalization** - Multi-language support with SSR-safe implementation
 - **Type Safety** - Full TypeScript coverage with strict configuration
-- **Performance** - Optimized with Next.js SSR and SWR caching
+- **Performance** - Optimized with Next.js SSR and hydration-safe components
 - **Accessibility** - WCAG compliant components and proper ARIA labels
 - **Developer Experience** - Hot reload, fast linting, and consistent formatting
+- **SSR Compatibility** - Hydration-safe components with proper browser detection
 
 ## Code Quality Standards
 
@@ -378,7 +409,8 @@ store/
 6. **Create specific interfaces** - Avoid large, monolithic interfaces
 7. **Add accessibility** - Include proper ARIA labels and attributes
 8. **Use CSS modules** - Component-scoped styling only
-9. **Run quality checks** - `npm run lint` and `npm run format` before commits
+9. **Test SSR compatibility** - Ensure components work with server-side rendering
+10. **Run quality checks** - `npm run lint` and `npm run format` before commits
 
 ## Deployment
 

@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
-const PUBLIC_PATHS = new Set(["/login", "/dashboard"]);
 const PROTECTED_PATHS = new Set(["/portal", "/"]);
 
 export function middleware(req: NextRequest) {
@@ -21,13 +20,6 @@ export function middleware(req: NextRequest) {
     } catch {
       decoded = null;
     }
-  }
-
-  if (PUBLIC_PATHS.has(pathname)) {
-    if ((decoded || decoded?.exp) && decoded?.exp * 1000 > Date.now()) {
-      return NextResponse.redirect(new URL("/dashboard", req.url));
-    }
-    return NextResponse.next();
   }
 
   if (

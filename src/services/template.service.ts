@@ -3,7 +3,7 @@ import type {
   PathParams,
   QueryParams,
 } from "../interface/url.builder.interface";
-import ApiService from "./api.service";
+import ApiService from "./httpClient.service";
 import URLBuilder from "@template/utils/url.builder";
 
 class TemplateService extends ApiService {
