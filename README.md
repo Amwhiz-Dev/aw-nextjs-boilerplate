@@ -114,6 +114,7 @@ src/
 │   ├── SideBar/                 # Navigation sidebar
 │   │   ├── index.tsx
 │   │   └── SideBar.module.scss
+│   │   └── useSideBar.ts
 │   └── icons/                   # SVG icon components
 │       ├── index.ts
 │       └── SignoutIcon.tsx
