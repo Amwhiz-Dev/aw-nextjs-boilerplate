@@ -127,7 +127,7 @@ src/
 ├── enum/                        # TypeScript enums
 │   ├── request.enum.ts
 │   ├── service.enum.ts
-│   └── sideNav.enum.ts
+│   └── sidebar.enum.ts
 ├── hooks/                       # Custom React hooks
 │   ├── useNavigation.ts
 │   ├── useStoredTheme.ts
@@ -135,7 +135,7 @@ src/
 ├── interface/                   # TypeScript interfaces
 │   ├── authOption.interface.ts
 │   ├── header.interface.ts
-│   ├── sidenav.interface.ts
+│   ├── sidebar.interface.ts
 │   ├── store.interface.ts
 │   ├── url.builder.interface.ts
 │   ├── userData.interface.ts

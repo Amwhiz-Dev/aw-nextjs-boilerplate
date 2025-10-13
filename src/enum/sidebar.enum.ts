@@ -1,4 +1,4 @@
-export enum SideNav {
+export enum SideBar {
   DASHBOARD = "dashboard",
   logout = "logout",
 }

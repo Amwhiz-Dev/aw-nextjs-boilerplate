@@ -3,7 +3,7 @@ import style from "./Header.module.scss";
 import { Button } from "primereact/button";
 import { OverlayPanel } from "primereact/overlaypanel";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { SideNav } from "@template/enum/sideNav.enum";
+import { SideBar } from "@template/enum/sidebar.enum";
 import LanguageSwither from "./LanguageSwitcher";
 import { SignoutIcon } from "../icons";
 import { useHeader } from "./useHeader";
@@ -40,7 +40,7 @@ const Header = () => {
         </div>
         <Button className="logout-btn" onClick={handleLogout}>
           <SignoutIcon />
-          <div className="label">{SideNav.logout}</div>
+          <div className="label">{SideBar.logout}</div>
         </Button>
       </OverlayPanel>
     </div>

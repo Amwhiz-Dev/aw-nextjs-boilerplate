@@ -5,7 +5,7 @@ import { Ripple } from "primereact/ripple";
 import { sideMenu } from "@template/common/sideMenu";
 import { useNavigation } from "@template/hooks/useNavigation";
 import { useTranslation } from "react-i18next";
-import type { MenuItem } from "@template/interface/sidenav.interface";
+import type { MenuItem } from "@template/interface/sidebar.interface";
 
 const Sidebar: React.FC = () => {
   const { pathname } = useNavigation();
