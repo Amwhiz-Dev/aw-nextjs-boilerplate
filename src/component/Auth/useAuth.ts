@@ -1,4 +1,4 @@
-import { SERVICE_KEY } from "@template/enum/service.enum";
+import { ServiceKey } from "@template/enum/service.enum";
 import { useNavigation } from "@template/hooks/useNavigation";
 import templateService from "@template/services/template.service";
 import { getAlertError } from "@template/utils/generateToast";
@@ -19,7 +19,7 @@ export const useLogin = (
     isMutating,
     data,
     error: swrError,
-  } = useSWRMutation(SERVICE_KEY.LOGIN, () =>
+  } = useSWRMutation(ServiceKey.LOGIN, () =>
     templateService.verifyUser(formData),
   );
 

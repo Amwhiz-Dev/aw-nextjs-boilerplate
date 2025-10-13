@@ -5,9 +5,9 @@ import { Ripple } from "primereact/ripple";
 import { sideMenu } from "@template/common/sideMenu";
 import { useNavigation } from "@template/hooks/useNavigation";
 import { useTranslation } from "react-i18next";
-import type { MenuItem } from "@template/interface/sidebar.interface";
+import type { MenuItem } from "@template/interface/sideBars.interface";
 
-const Sidebar: React.FC = () => {
+const SideBars: React.FC = () => {
   const { pathname } = useNavigation();
   const { t } = useTranslation("common");
   const RenderChildren: React.FC<{ item: MenuItem }> = ({ item }) => {
@@ -56,4 +56,4 @@ const Sidebar: React.FC = () => {
   );
 };
 
-export default Sidebar;
+export default SideBars;

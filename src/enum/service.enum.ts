@@ -1,3 +1,3 @@
-export enum SERVICE_KEY {
+export enum ServiceKey {
   LOGIN = "login",
 }

@@ -3,7 +3,7 @@ import style from "./Header.module.scss";
 import { Button } from "primereact/button";
 import { OverlayPanel } from "primereact/overlaypanel";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { SideBar } from "@template/enum/sidebar.enum";
+import { SideBar } from "@template/enum/sideBars.enum";
 import LanguageSwither from "./LanguageSwitcher";
 import { SignoutIcon } from "../icons";
 import { useHeader } from "./useHeader";
