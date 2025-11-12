@@ -24,10 +24,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     [theme, setTheme, toastShow],
   );
   return (
-    <ThemeContext.Provider value={value}>
+    <ThemeContext value={value}>
       <Toast ref={toast} />
       {children}
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 };
 

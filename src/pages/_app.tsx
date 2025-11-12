@@ -10,17 +10,24 @@ import { I18nextProvider } from "react-i18next";
 import { PrimeReactProvider } from "primereact/api";
 import { preFetchPath } from "@template/common/preFetch";
 import { useNavigation } from "@template/hooks/useNavigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { preFetch } = useNavigation();
-
+  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     preFetchPath.forEach((path) => {
       preFetch(path);
     });
   }, [preFetch]);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
   return (
     <PrimeReactProvider>
       <ThemeProvider>
