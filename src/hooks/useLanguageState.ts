@@ -10,7 +10,6 @@ export function useLanguageState(initialLang: Language) {
   const [language, setLanguageState] = useState<Language>(initialLang);
 
   const setLanguage = (lang: Language) => {
-    console.log(lang, language);
     if (lang === language) return;
     i18n.changeLanguage(lang);
     setLanguageState(lang);

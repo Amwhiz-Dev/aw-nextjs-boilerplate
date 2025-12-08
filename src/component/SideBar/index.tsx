@@ -1,10 +1,23 @@
+// React
 import type React from "react";
-import style from "./SideBar.module.scss";
+
+// Next.js
 import Link from "next/link";
+
+// PrimeReact
 import { Ripple } from "primereact/ripple";
-import { sideMenu } from "@template/common/sideMenu";
-import type { MenuItem } from "@template/interface/sideBar.interface";
+
+// Styles
+import style from "./SideBar.module.scss";
+
+// Store / Hooks
 import { useSideBar } from "./useSideBar";
+
+// Types / Interfaces
+import type { MenuItem } from "@template/interface/sideBar.interface";
+
+// App Data
+import { sideMenu } from "@template/common/sideMenu";
 
 const SideBar: React.FC = () => {
   const { t, isItemActive } = useSideBar();

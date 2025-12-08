@@ -1,1 +1,1 @@
-export const preFetchPath = ["/login", "/dashboard"];
+export const preFetchPath = ["/login", "/dashboard", "component"];

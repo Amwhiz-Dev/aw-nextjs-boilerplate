@@ -15,6 +15,13 @@ export const sideMenu = [
     ],
   },
   {
+    label: "component",
+    isGroupHead: true,
+    children: [
+      { label: "Component", to: "/component", active: ["/component"] },
+    ],
+  },
+  {
     label: "station",
     isGroupHead: false,
     to: "/station",
