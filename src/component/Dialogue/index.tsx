@@ -1,12 +1,11 @@
 "use client";
 
-// PrimeReact
-import { Button } from "primereact/button";
+import { Button } from "@/ui/button";
 
 // Context
 import { useModal } from "@template/context/ModalProvider";
 
-interface ModalTriggerProps {
+export interface ModalTriggerProps {
   label: string;
   title?: string;
   description?: string;
@@ -25,7 +24,8 @@ export const ModalTrigger = ({
 
   return (
     <Button
-      label={label}
+      title={label}
+      variant={"default"}
       onClick={() =>
         openModal({
           title,
@@ -34,6 +34,8 @@ export const ModalTrigger = ({
           onCancel,
         })
       }
-    />
+    >
+      {label}
+    </Button>
   );
 };

@@ -10,14 +10,12 @@ import Sidebar from "@template/component/SideBar";
 // Store
 import { useAppStore } from "@template/store/useAppStore";
 
-// Context
-import { useToast } from "@template/context/ToastContext";
-
 // Styles
 import style from "./Layout.module.scss";
 
 // Type
 import type { LayoutProps } from "@template/interface/layoutProps.interface";
+import { toast } from "sonner";
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { appData, updation } = useAppStore();
@@ -25,6 +23,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   //  Sidebar Toggle
   const toggleSidebar = () => {
     updation({ sideBarOpen: !appData?.sideBarOpen });
+    toast.success("Toggle done");
   };
 
   return (

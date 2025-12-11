@@ -19,10 +19,7 @@ import { ThemeProvider } from "@template/context/ThemeContext";
 import { NetworkProvider } from "@template/context/NetworkProvider";
 import { AuthProvider } from "@template/context/AuthContext";
 import { ToastProvider } from "@template/context/ToastContext";
-import {
-  PermissionProvider,
-  usePermission,
-} from "@template/context/PermissionContext";
+import { PermissionProvider } from "@template/context/PermissionContext";
 import { LayoutProvider } from "@template/context/LayoutProvider";
 import { ModalProvider } from "@template/context/ModalProvider";
 import { ErrorBoundary } from "@template/context/ErrorBoundary";
@@ -35,6 +32,7 @@ import { preFetchPath } from "@template/common/preFetch";
 
 // Components
 import { GlobalLoader } from "@template/component/GlobalLoader/GlobalLoader";
+import { Toaster } from "sonner";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { preFetch } = useNavigation();
@@ -58,17 +56,18 @@ export default function App({ Component, pageProps }: AppProps) {
             <I18nextProvider i18n={i18n}>
               <LanguageProvider>
                 <PermissionProvider>
-                  <AuthProvider>
-                    <LayoutProvider>
-                      <ToastProvider>
+                  <Toaster position="bottom-right" richColors closeButton />
+                  <ToastProvider>
+                    <AuthProvider>
+                      <LayoutProvider>
                         <ModalProvider>
                           <Suspense fallback={<GlobalLoader />}>
                             <Component {...pageProps} />
                           </Suspense>
                         </ModalProvider>
-                      </ToastProvider>
-                    </LayoutProvider>
-                  </AuthProvider>
+                      </LayoutProvider>
+                    </AuthProvider>
+                  </ToastProvider>
                 </PermissionProvider>
               </LanguageProvider>
             </I18nextProvider>

@@ -3,13 +3,15 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   // important: true,
   // content: [
-  //   "./src/**/*.{js,ts,jsx,tsx}",
+  //   "./src/**/*.{js,ts,jsx,tsx}", // This already covers all src/*
   //   "./pages/**/*.{js,ts,jsx,tsx}",
   //   "./app/**/*.{js,ts,jsx,tsx}",
-  //   "./components/**/*.{js,ts,jsx,tsx}",
   // ],
-  content: ["./src/**/*.{js,ts,jsx,tsx}", "./**/*.{js,ts,jsx,tsx}"],
-
+  // content: ["./src/**/*.{js,ts,jsx,tsx}", "./**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}", // all source files
+    "./src/components/**/*.{js,ts,jsx,tsx}", // make sure UI components explicitly included
+  ],
   theme: {
     extend: {
       fontFamily: {

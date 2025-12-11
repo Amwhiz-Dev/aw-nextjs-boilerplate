@@ -13,7 +13,7 @@ export const changeTheme = (themeName: string) => {
   }
 
   const existingLink = document.getElementById(
-    THEME_STORAGE_KEY,
+    THEME_STORAGE_KEY
   ) as HTMLLinkElement;
 
   // Use CDN but with faster loading

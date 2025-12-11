@@ -8,22 +8,23 @@ import {
   useCallback,
 } from "react";
 
-type PermissionContextType = {
-  permissions: string[];
-  setPermissions: (perms: string[]) => void;
-  hasPermission: (perm: string) => boolean;
-};
+export type PermissionType = string; // You can change to enum later
+
+export interface PermissionContextType {
+  permissions: PermissionType[];
+  setPermissions: (perms: PermissionType[]) => void;
+  hasPermission: (perm: PermissionType) => boolean;
+}
 
 const PermissionContext = createContext<PermissionContextType | undefined>(
   undefined
 );
 
 export const PermissionProvider = ({ children }: { children: ReactNode }) => {
-  const [permissions, setPermissions] = useState<string[]>([]);
+  const [permissions, setPermissions] = useState<PermissionType[]>([]);
 
-  // Helper to check permission
   const hasPermission = useCallback(
-    (perm: string) => permissions.includes(perm),
+    (perm: PermissionType) => permissions.includes(perm),
     [permissions]
   );
 
@@ -38,7 +39,8 @@ export const PermissionProvider = ({ children }: { children: ReactNode }) => {
 
 export const usePermission = (): PermissionContextType => {
   const context = useContext(PermissionContext);
-  if (!context)
+  if (!context) {
     throw new Error("usePermission must be used within PermissionProvider");
+  }
   return context;
 };

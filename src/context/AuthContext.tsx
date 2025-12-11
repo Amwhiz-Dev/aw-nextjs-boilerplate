@@ -1,3 +1,5 @@
+"use client";
+
 import {
   createContext,
   useContext,
@@ -5,9 +7,10 @@ import {
   useState,
   ReactNode,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 interface User {
-  id: string;
+  id?: string;
   name: string;
   email: string;
   role?: string;
@@ -18,40 +21,76 @@ interface AuthContextType {
   token: string | null;
   login: (token: string, userData: User) => void;
   logout: () => void;
+  setUser: (user: User | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
+  // ⭐ Load instantly (NO useEffect)
+  const [user, setUser] = useState<User | null>(() => {
+    const savedUser = localStorage.getItem("auth_user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
+  const [token, setToken] = useState<string | null>(() =>
+    localStorage.getItem("auth_token")
+  );
+
+  const [justLoggedOut, setJustLoggedOut] = useState(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const publicRoutes = ["/login", "/signup"];
+
+  // ⭐ Redirect logic — now NO flicker, no double redirect
   useEffect(() => {
-    const savedToken = localStorage.getItem("token");
-    const savedUser = localStorage.getItem("user");
+    if (!pathname) return; // Skip if pathname is null or undefined
 
-    if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
+    const loggedIn = !!token;
+
+    if (justLoggedOut) return;
+
+    // Logged in → trying to access login/signup
+    if (loggedIn && publicRoutes.includes(pathname)) {
+      router.replace("/dashboard");
+      return;
     }
-  }, []);
+
+    // Not logged in → trying to access protected page
+    if (!loggedIn && !publicRoutes.includes(pathname)) {
+      router.replace("/login");
+      return;
+    }
+  }, [token, pathname, justLoggedOut]);
 
   const login = (token: string, userData: User) => {
     setToken(token);
     setUser(userData);
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(userData));
+
+    localStorage.setItem("auth_token", token);
+    localStorage.setItem("auth_user", JSON.stringify(userData));
+
+    router.replace("/dashboard");
   };
 
   const logout = () => {
+    setJustLoggedOut(true);
+
     setToken(null);
     setUser(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("auth_user");
+
+    router.replace("/login");
+
+    setTimeout(() => setJustLoggedOut(false), 300);
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, setUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

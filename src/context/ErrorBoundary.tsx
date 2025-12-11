@@ -26,7 +26,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div style={{ padding: 20 }}>
-          <h2>Something went wrong.</h2>
+          <h2>Something went wrong</h2>
           <p>Please refresh the page.</p>
         </div>
       );

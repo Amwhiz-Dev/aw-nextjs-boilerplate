@@ -2,7 +2,7 @@
   @apply flex max-h-screen min-h-screen flex-row overflow-hidden relative;
 
   .sidebarContainer {
-    @apply absolute left-[-240px] transition-[left] ease-in-out duration-300;
+    @apply absolute md:left-[-240px] transition-[left] ease-in-out duration-300;
   }
 
   .sidebarOpen {
@@ -13,7 +13,7 @@
     @apply flex-1 flex flex-col relative transition-all ease-in-out duration-300;
 
     .content {
-      @apply px-7 pt-6 flex-1 block bg-white overflow-y-scroll;
+      @apply md:px-7 md:pt-6 pt-5 flex-1 block bg-white;
     }
   }
 

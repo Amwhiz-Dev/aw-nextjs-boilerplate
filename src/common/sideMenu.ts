@@ -1,8 +1,15 @@
 export const sideMenu = [
   {
     label: "dashboard",
-    isGroupHead: true,
-    children: [{ label: "reports", to: "/dashboard", active: ["/dashboard"] }],
+    isGroupHead: false,
+    children: [
+      { label: "Dashboard", to: "/dashboard", active: ["/dashboard"] },
+    ],
+  },
+  {
+    label: "users",
+    isGroupHead: false,
+    children: [{ label: "Users", to: "/users", active: ["/users"] }],
   },
   {
     label: "system",
@@ -27,5 +34,18 @@ export const sideMenu = [
     to: "/station",
     active: ["/station"],
     children: [],
+  },
+];
+
+// Define separate logoutMenu
+export const logoutMenu = [
+  {
+    label: "Logout",
+    isGroupHead: false,
+    children: [{ label: "Logout", to: "/login", active: ["/login"] }],
+    onClick: () => {
+      // call your logout handler
+      // handleLogout();
+    },
   },
 ];

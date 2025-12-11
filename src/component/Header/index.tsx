@@ -1,14 +1,21 @@
-// React
-import type React from "react";
+"use client";
 
-// Styles
+import type React from "react";
 import style from "./Header.module.scss";
 
+// ShadCN
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+} from "@/ui/menubar";
+
 // Components
-import { Button } from "primereact/button";
-import { OverlayPanel } from "primereact/overlaypanel";
+import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeSwitcher from "./ThemeSwitcher";
-import LanguageSwither from "./LanguageSwitcher";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 // Icons
@@ -17,57 +24,68 @@ import MenuIcon from "../icons/Menu";
 
 // Hooks
 import { useHeader } from "./useHeader";
-import { useSideBar } from "../SideBar/useSideBar";
 
 // Enums
 import { SideBar } from "@template/enum/sideBar.enum";
 
-// Types
-import type { UserButtonProps } from "@template/interface/header.interface";
-import { HeaderActionsProps } from "@template/interface/headerActionsProp.interface";
+// Props
+import type { HeaderActionsProps } from "@template/interface/headerActionsProp.interface";
+import { useAuth } from "@/context/AuthContext";
 
-// Single responsibility: render user button
-const UserButton: React.FC<UserButtonProps> = ({
-  className,
-  onClick,
-  children,
-}) => {
-  return (
-    <Button className={className} onClick={onClick}>
-      {children}
-    </Button>
-  );
-};
-
-// Single responsibility: render header UI
 const Header: React.FC<HeaderActionsProps> = ({ showSideBar }) => {
-  const { overlayRef, handleLogout, toggleOverlay, getUserInitial } =
-    useHeader();
-  const { t } = useSideBar();
+  const { getUserInitial } = useHeader();
+  const { user, logout } = useAuth();
 
   return (
     <div className={style.container}>
+      {/* Left Section */}
       <div className={style.pageInfo}>
         <span onClick={showSideBar} className={style.sidebarToggle}>
           <MenuIcon />
         </span>
+
         <span className={`custom_breadcrumbs ${style.breadcrumbs}`}>
           <Breadcrumbs showIcon={false} />
         </span>
       </div>
-      <UserButton className="user-button-color" onClick={toggleOverlay}>
-        {getUserInitial()}
-      </UserButton>
-      <OverlayPanel ref={overlayRef} className="overlay-container">
-        <div className="overlay-fields">
-          <LanguageSwither />
-          <ThemeSwitcher />
-        </div>
-        <Button className="logout-btn" onClick={handleLogout}>
-          <SignoutIcon />
-          <div className="label">{SideBar.logout}</div>
-        </Button>
-      </OverlayPanel>
+
+      {/* Right Section - Menubar */}
+      <Menubar className="border-none shadow-none bg-white ml-auto">
+        <MenubarMenu>
+          <MenubarTrigger className="user-button-color cursor-pointer rounded-full w-10 h-10 flex items-center justify-center">
+            {getUserInitial()}
+          </MenubarTrigger>
+
+          <MenubarContent className="p-4 w-64 space-y-4">
+            <div className="userData p-2 rounded-md text-gray-800 flex flex-col gap-1">
+              <span className="font-semibold">{user?.name}</span>
+              <span className="text-sm text-gray-600">
+                {user?.role || "Admin"}
+              </span>
+            </div>
+            {/* Language */}
+            <MenubarItem className="p-0 hover:bg-transparent focus:bg-transparent">
+              <LanguageSwitcher />
+            </MenubarItem>
+
+            {/* Theme */}
+            <MenubarItem className="p-0 hover:bg-transparent focus:bg-transparent">
+              <ThemeSwitcher />
+            </MenubarItem>
+
+            <MenubarSeparator />
+
+            {/* Logout */}
+            <MenubarItem
+              onClick={logout}
+              className="logout-btn flex items-center gap-2 cursor-pointer"
+            >
+              <SignoutIcon />
+              <span>{SideBar.logout}</span>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
     </div>
   );
 };
