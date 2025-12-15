@@ -26,13 +26,15 @@ export default function Breadcrumbs({
   const pathname = usePathname();
   const { t } = useTranslation("common");
 
-  //  Build menu lookup
   const menuMap: Record<string, any> = {};
 
   sideMenu.forEach((item) => {
+    // Add parent item if it has `to`
     if (item.to) menuMap[item.to] = item;
+
+    // Add children safely
     item.children?.forEach((child) => {
-      menuMap[child.to] = child;
+      if (child.to) menuMap[child.to] = child;
     });
   });
 

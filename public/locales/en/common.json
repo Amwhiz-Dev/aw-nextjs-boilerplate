@@ -8,5 +8,14 @@
   "theming": "Theming",
   "profile": "Profile",
   "station": "Station",
-  "portal": "Portal ( Protected )"
+  "portal": "Portal ( Protected )",
+  "users": "Users",
+  "component": "Component",
+  "logout": "Logout",
+  "navUser": {
+    "account": "Account",
+    "billing": "Billing",
+    "notifications": "Notifications",
+    "logout": "Log out"
+  }
 }

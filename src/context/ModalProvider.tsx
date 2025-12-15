@@ -1,61 +1,65 @@
 "use client";
 
 import { ReactNode, createContext, useContext, useState } from "react";
-import { Dialog } from "primereact/dialog";
-import { Button } from "primereact/button";
-
-interface ModalConfig {
-  title?: string;
-  description?: string;
-  onOk?: () => void;
-  onCancel?: () => void;
-}
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/ui/dialog";
+import { Button } from "@/ui/button";
+import { ModalConfig } from "@/interface/modalConfig.interface";
 
 const ModalContext = createContext<any>(null);
 
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
   const [config, setConfig] = useState<ModalConfig>({});
 
   const openModal = (payload: ModalConfig) => {
     setConfig(payload);
-    setVisible(true);
+    setOpen(true);
   };
 
-  const closeModal = () => setVisible(false);
+  const closeModal = () => setOpen(false);
 
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
 
-      <Dialog
-        header={config.title}
-        visible={visible}
-        onHide={closeModal}
-        style={{ width: "28rem" }}
-      >
-        {config.description && (
-          <p className="text-sm opacity-80">{config.description}</p>
-        )}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            {config.title && <DialogTitle>{config.title}</DialogTitle>}
+            {config.description && (
+              <DialogDescription>{config.description}</DialogDescription>
+            )}
+          </DialogHeader>
 
-        {/* Footer */}
-        <div className="flex justify-end gap-2 mt-5">
-          <Button
-            label="Cancel"
-            severity="secondary"
-            onClick={() => {
-              config.onCancel?.();
-              closeModal();
-            }}
-          />
-          <Button
-            label="OK"
-            onClick={() => {
-              config.onOk?.();
-              closeModal();
-            }}
-          />
-        </div>
+          <DialogFooter className="mt-4 flex justify-end gap-2">
+            <Button
+              variant="destructive"
+              onClick={() => {
+                config.onCancel?.();
+                closeModal();
+              }}
+            >
+              Cancel
+            </Button>
+
+            <Button
+              variant="default"
+              onClick={() => {
+                config.onOk?.();
+                closeModal();
+              }}
+            >
+              OK
+            </Button>
+          </DialogFooter>
+        </DialogContent>
       </Dialog>
     </ModalContext.Provider>
   );

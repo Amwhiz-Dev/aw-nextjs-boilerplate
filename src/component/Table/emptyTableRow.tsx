@@ -1,9 +1,8 @@
-import { TableRow, TableCell } from "@/ui/table";
+// Interfaces
+import { EmptyTableRowProps } from "@/interface/table.interface";
 
-interface EmptyTableRowProps {
-  colSpan: number;
-  message?: string;
-}
+// UI Components
+import { TableRow, TableCell } from "@/ui/table";
 
 export function EmptyTableRow({
   colSpan,

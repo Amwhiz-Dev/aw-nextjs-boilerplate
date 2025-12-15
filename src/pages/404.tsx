@@ -14,10 +14,6 @@ export default function NotFoundPage() {
           <a href="/" className="notfound_homeBtn">
             Go back home
           </a>
-
-          {/* <a href="/support" className="notfound_supportLink">
-            Contact support <span aria-hidden="true">&rarr;</span>
-          </a> */}
         </div>
       </div>
     </main>

@@ -4,10 +4,7 @@ import { createContext, ReactNode, useContext, useRef } from "react";
 import { Toast } from "primereact/toast";
 import type { ToastMessage } from "primereact/toast";
 import { useNetwork } from "@template/context/NetworkProvider";
-
-interface ToastContextType {
-  showToast: (msg: string, type?: "success" | "error" | "info") => void;
-}
+import { ToastContextType } from "@/interface/toastContextType.interface";
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 

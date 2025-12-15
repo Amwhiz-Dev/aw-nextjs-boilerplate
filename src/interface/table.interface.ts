@@ -1,8 +1,11 @@
+import { Column, ColumnDef } from "@tanstack/react-table";
+
 export type Payment = {
   id: string;
   amount: number;
-  status: "pending" | "processing" | "success" | "failed" | "completed";
+  status: string;
   email: string;
+  customer?: string;
 };
 
 export type Info = {
@@ -28,3 +31,29 @@ export type ColumnOverride<T> = {
     cell?: (row: T) => React.ReactNode;
   };
 };
+
+export interface EmptyTableRowProps {
+  colSpan: number;
+  message?: string;
+}
+
+export type ColumnFilterProps<T> = {
+  column: Column<T, unknown>;
+  options: string[];
+  placeholder?: string;
+  classNames?: string;
+};
+
+export interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+}
+
+export type SortableHeaderProps<TData> = {
+  column: Column<TData, unknown>;
+  title: string;
+  showTitle?: boolean;
+  disableSort?: boolean;
+};
+
+export type SortOrder = "asc" | "desc" | "";

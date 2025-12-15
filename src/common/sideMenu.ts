@@ -1,51 +1,54 @@
-export const sideMenu = [
+// Interface
+import { MenuItem } from "@/interface/sideBar.interface";
+
+// Icons
+import { LayoutDashboard, Users, LogOut } from "lucide-react";
+
+export const sideMenu: MenuItem[] = [
   {
     label: "dashboard",
+    icon: LayoutDashboard,
     isGroupHead: false,
     children: [
-      { label: "Dashboard", to: "/dashboard", active: ["/dashboard"] },
+      {
+        label: "Dashboard",
+        to: "/dashboard",
+        active: ["/dashboard"],
+        icon: LayoutDashboard,
+      },
     ],
   },
+
   {
     label: "users",
-    isGroupHead: false,
-    children: [{ label: "Users", to: "/users", active: ["/users"] }],
-  },
-  {
-    label: "system",
+    icon: Users,
     isGroupHead: true,
     children: [
-      { label: "portal", to: "/portal", active: ["/portal"] },
-      { label: "language", to: "/language", active: ["/language"] },
-      { label: "theming", to: "/theming", active: ["/theming"] },
-      { label: "profile", to: "/profile", active: ["/profile"] },
+      {
+        label: "Users",
+        to: "/users",
+        active: ["/users"],
+        icon: Users,
+      },
     ],
-  },
-  {
-    label: "component",
-    isGroupHead: true,
-    children: [
-      { label: "Component", to: "/component", active: ["/component"] },
-    ],
-  },
-  {
-    label: "station",
-    isGroupHead: false,
-    to: "/station",
-    active: ["/station"],
-    children: [],
   },
 ];
 
-// Define separate logoutMenu
 export const logoutMenu = [
   {
     label: "Logout",
+    icon: LogOut,
     isGroupHead: false,
-    children: [{ label: "Logout", to: "/login", active: ["/login"] }],
+    children: [
+      {
+        label: "Logout",
+        to: "/login",
+        active: ["/login"],
+        icon: LogOut,
+      },
+    ],
     onClick: () => {
-      // call your logout handler
-      // handleLogout();
+      // logout();
     },
   },
 ];

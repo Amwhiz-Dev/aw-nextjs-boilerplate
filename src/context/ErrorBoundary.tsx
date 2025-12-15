@@ -1,10 +1,10 @@
 import React from "react";
 
-interface Props {
+export interface Props {
   children: React.ReactNode;
 }
 
-interface State {
+export interface State {
   hasError: boolean;
 }
 

@@ -1,20 +1,16 @@
 "use client";
 
 import {
+  PermissionContextType,
+  PermissionType,
+} from "@/interface/permissionType.interface";
+import {
   ReactNode,
   createContext,
   useContext,
   useState,
   useCallback,
 } from "react";
-
-export type PermissionType = string; // You can change to enum later
-
-export interface PermissionContextType {
-  permissions: PermissionType[];
-  setPermissions: (perms: PermissionType[]) => void;
-  hasPermission: (perm: PermissionType) => boolean;
-}
 
 const PermissionContext = createContext<PermissionContextType | undefined>(
   undefined

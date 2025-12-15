@@ -1,62 +1,35 @@
 "use client";
 
+// React
 import type React from "react";
-import { useEffect } from "react";
 
 // Components
 import Header from "@template/component/Header";
-import Sidebar from "@template/component/SideBar";
+import SideBar from "@template/component/SideBar";
 
-// Store
-import { useAppStore } from "@template/store/useAppStore";
+// Sidebar Provider + Inset
+import { SidebarProvider, SidebarInset } from "@/ui/sidebar";
 
-// Context
-// import { useToast } from "@template/context/ToastContext";
-
-// Styles
-import style from "./Layout.module.scss";
-
-// Type
+// Types
 import type { LayoutProps } from "@template/interface/layoutProps.interface";
-import { toast } from "sonner";
-import { Button } from "@/ui/button";
 
-const DashBoardLayout: React.FC<LayoutProps> = ({ children, className }) => {
-  const { appData, updation } = useAppStore();
-
-  //  Sidebar Toggle
-  const toggleSidebar = () => {
-    updation({ sideBarOpen: !appData?.sideBarOpen });
-  };
-
-  // const showToast = () => {
-  //   toast.success(`Done working`);
-  // };
-
+const DashBoardLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className={`${className} ${style.container}`}>
-      {/* Sidebar */}
-      <div
-        className={`${style.sidebarContainer} ${
-          appData?.sideBarOpen ? style.sidebarOpen : ""
-        }`}
-      >
-        <Sidebar />
+    <SidebarProvider defaultOpen={true}>
+      <div className="flex min-h-screen w-full">
+        {/* Sidebar renders itself for mobile & desktop */}
+        <SideBar />
+        {/* Main content */}
+        <main className="p-3 bg-primary-bgLight w-full">
+          <SidebarInset className="bg-white flex-1 rounded-xl overflow-hidden">
+            <Header />
+            <div className="md:p-4 py-6 h-[calc(100vh-100px)] overflow-auto">
+              {children}
+            </div>
+          </SidebarInset>
+        </main>
       </div>
-
-      {/* Main Content */}
-      <div
-        className={`${style.mainContainer} ${
-          appData?.sideBarOpen ? style.mainContainerSidebarOpen : ""
-        }`}
-      >
-        <Header showSideBar={toggleSidebar} />
-        {/* <Button onClick={showToast}>
-          Show
-        </Button> */}
-        <main className={style.content}>{children}</main>
-      </div>
-    </div>
+    </SidebarProvider>
   );
 };
 

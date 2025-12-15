@@ -1,106 +1,164 @@
 "use client";
 
+// Interfaces
 import { Payment, User } from "@/interface/table.interface";
-import { Button } from "@/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/ui/dropdown-menu";
-import { getInitials } from "@/utils/getInitials";
+import { Status } from "@/interface/status.interface";
+
+// Constants
+import { STATUS_MAP } from "@/constants/status.constant";
+
+// UI Components
+import { Checkbox } from "@/ui/checkbox";
+import { StatusBadge } from "../StatusBadge";
+import { ActionMenu } from "../ActionMenu";
+
+// Table Utilities
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { SortableHeader } from "./sortableHeader";
+import { renderAvatarCell } from "./renderAvatarCell";
 
 export const transactionColumns: ColumnDef<Payment>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    id: "select",
+    enableSorting: false,
+    enableHiding: false,
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
   },
   {
     accessorKey: "email",
-    header: () => <div>Email</div>,
-    cell: ({ renderValue }) => {
-      return <div>{renderValue<string>()}</div>;
-    },
+    header: ({ column }) => <SortableHeader column={column} title="Email" />,
+    cell: ({ row }) => renderAvatarCell(row, row.original.email),
+    enableSorting: true,
   },
   {
     accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    header: ({ column }) => <SortableHeader column={column} title="Amount" />,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted || "-"}</div>;
-    },
-  },
-  {
-    accessorKey: "",
-    header: () => <div>Action</div>,
-    id: "actions",
-    cell: ({ row }) => {
-      const payment = row.original;
-
+      const amount = Number(row.getValue("amount"));
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              {/* <span className="sr-only">Open menu</span> */}
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="font-medium">
+          {new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(amount)}
+        </div>
       );
     },
+    enableSorting: true,
+    enableHiding: true,
+  },
+
+  {
+    accessorKey: "status",
+    header: ({ column }) => <SortableHeader column={column} title="Status" />,
+    cell: ({ row }) => {
+      const rawStatus = row.getValue("status") as string;
+
+      const mappedStatus = STATUS_MAP[rawStatus] ?? "InActive";
+
+      return <StatusBadge status={mappedStatus} />;
+    },
+    enableSorting: true,
+    enableHiding: true,
+  },
+
+  {
+    id: "actions",
+    enableSorting: false,
+    enableHiding: false,
+    header: () => <div>Action</div>,
+    cell: ({ row }) => (
+      <ActionMenu
+        row={row.original}
+        actions={[
+          {
+            label: "Copy payment ID",
+            onClick: (payment) => navigator.clipboard.writeText(payment.id),
+          },
+          {
+            separator: true,
+            label: "View customer",
+            onClick: (payment) => {
+              console.log("View customer", payment?.customer);
+            },
+          },
+          {
+            label: "View payment details",
+            onClick: (payment) => {
+              console.log("View payment", payment.id);
+            },
+          },
+        ]}
+      />
+    ),
   },
 ];
 
 export const userColumns: ColumnDef<User>[] = [
+  {
+    id: "select",
+    header: ({ table }) => {
+      return (
+        <div className="w-auto">
+          <Checkbox
+            checked={
+              table.getIsAllPageRowsSelected() ||
+              (table.getIsSomePageRowsSelected() && "indeterminate")
+            }
+            onCheckedChange={(value) =>
+              table.toggleAllPageRowsSelected(!!value)
+            }
+            aria-label="Select all"
+          />
+        </div>
+      );
+    },
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+  },
   {
     accessorKey: "id",
     header: "ID",
   },
   {
     accessorKey: "name",
-    header: "Name",
-    cell: ({ row }) => {
-      const user = row.original;
-      const initials = getInitials(user.name);
-
-      return (
-        <div className="flex items-center gap-2">
-          <div className="dp w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center font-bold text-sm">
-            {initials}
-          </div>
-          <div className="text-blue-600 hover:underline">{user.name}</div>
-        </div>
-      );
-    },
+    header: ({ column }) => <SortableHeader column={column} title="Name" />,
+    cell: ({ row }) => renderAvatarCell(row, row.original.name),
   },
   {
     accessorKey: "email",
-    header: "Email",
+    header: ({ column }) => <SortableHeader column={column} title="Email" />,
   },
   {
     accessorFn: (row) => row.info.status,
     id: "status",
     header: "Status",
+    cell: ({ row }) => {
+      const status = row.getValue("status") as Status;
+
+      return <StatusBadge status={status} />;
+    },
   },
   {
     accessorFn: (row) => row.info.role,
@@ -110,7 +168,14 @@ export const userColumns: ColumnDef<User>[] = [
   {
     accessorFn: (row) => row.info.yearsOfExperience,
     id: "experience",
-    header: "Years Exp",
+    header: ({ column }) => (
+      <SortableHeader column={column} title="Years Exp" />
+    ),
+    cell: ({ row }) => (
+      <div className="text-center max-w-[100px]">
+        {row.getValue("experience")}
+      </div>
+    ),
   },
   {
     accessorFn: (row) => row.info.department,

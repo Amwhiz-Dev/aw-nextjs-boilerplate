@@ -1,8 +1,8 @@
 .container {
-  @apply flex max-h-screen min-h-screen flex-row overflow-hidden relative;
+  @apply flex max-h-screen min-h-screen flex-row relative p-4 w-full overflow-hidden;
 
   .sidebarContainer {
-    @apply absolute left-[-240px] transition-[left] ease-in-out duration-300;
+    @apply transition-[left] ease-in-out duration-300;
   }
 
   .sidebarOpen {
@@ -10,14 +10,14 @@
   }
 
   .mainContainer {
-    @apply flex-1 flex flex-col relative transition-all ease-in-out duration-300;
+    @apply flex-1 flex flex-col relative transition-all ease-in-out duration-300 rounded-xl overflow-hidden;
+
+    // &.mainContainerSidebarOpen {
+    //   @apply ml-60; // adjust to sidebar width, e.g., 240px
+    // }
 
     .content {
-      @apply px-7 pt-6 flex-1 block bg-white overflow-y-scroll;
+      @apply p-4 flex-1 block bg-white overflow-y-scroll;
     }
-  }
-
-  .mainContainerSidebarOpen {
-    @apply md:ml-60;
   }
 }

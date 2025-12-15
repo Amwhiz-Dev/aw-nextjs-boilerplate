@@ -1,13 +1,11 @@
 "use client";
 
-//React
 import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
 
-//Components
 import {
   Card,
   CardContent,
@@ -42,18 +40,29 @@ import { otpSchema } from "@/lib/validations/otp";
 
 // Enum
 import { AuthModeEnum, AuthTextEnum, FieldLabelsEnum } from "@/enum/auth.enum";
-import { baseDefaults } from "@/constants/default.constant";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/router";
 
-export function AuthForm({ mode, type, onSubmit }: AuthFormProps) {
+import { useRouter } from "next/navigation";
+
+export function AuthForm({ mode, type }: AuthFormProps) {
   const isSignup = mode === AuthModeEnum.SIGNUP;
   const isOtp = type === AuthModeEnum.OTP;
   const [otpSent, setOtpSent] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
-  const { setUser } = useAuth();
+
+  const { login, setUser } = useAuth();
   const router = useRouter();
+
+  const baseDefaults = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    otp: "",
+    agree: false,
+    remember: false,
+  };
 
   const defaultValues: AuthFormFields = {
     ...baseDefaults,
@@ -79,45 +88,37 @@ export function AuthForm({ mode, type, onSubmit }: AuthFormProps) {
   }, [otpSent]);
 
   const handleSubmit = async (data: AuthApiFormProps) => {
-    // 1️⃣ Signup password mismatch check
     if (isSignup && data.password !== data.confirmPassword) {
       toast.error(AuthTextEnum.PASSWORD_NOT_MATCH);
       return;
     }
 
-    // 2️⃣ OTP sending step
     if (isOtp && !otpSent) {
       toast.success(`${AuthTextEnum.OTP_SENT} ${data.email}`);
       setOtpSent(true);
       return;
     }
 
-    // 3️⃣ Remove unwanted fields
     const { confirmPassword, ...payload } = data;
 
-    // 4️⃣ Simulate API response (replace when connecting backend)
+    // Fake user
     const user = {
       name: payload.name || "User",
       email: payload.email,
-      // token: "dummy-jwt-token",
     };
-    // Fake token for now
     const token = "dummy-jwt-token";
 
-    // 5️⃣ Save user to context + localStorage
-    setUser(user);
-    localStorage.setItem("auth_token", token);
-    localStorage.setItem("auth_user", JSON.stringify(user));
+    // Store user with AuthContext login()
+    login(token, user);
 
-    // 6️⃣ Navigation handling
     if (mode === AuthModeEnum.LOGIN) {
       toast.success("Login Successful");
-      router.push("/dashboard");
+      router.replace("/dashboard");
     }
 
     if (mode === AuthModeEnum.SIGNUP) {
       toast.success("Signup Successful");
-      router.push("/login");
+      router.replace("/login");
     }
   };
 
@@ -234,7 +235,7 @@ export function AuthForm({ mode, type, onSubmit }: AuthFormProps) {
                           placeholder="••••••••"
                         />
                         <Button
-                          name="Show"
+                          type="button"
                           variant="ghost"
                           className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
                           onClick={() => setShowPassword((prev) => !prev)}

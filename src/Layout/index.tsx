@@ -1,46 +1,57 @@
 "use client";
 
-import type React from "react";
-import { useEffect } from "react";
+// React
+import React from "react";
 
 // Components
 import Header from "@template/component/Header";
 import Sidebar from "@template/component/SideBar";
 
-// Store
-import { useAppStore } from "@template/store/useAppStore";
+// Providers / Hooks
+import { SidebarProvider, useSidebar } from "@/ui/sidebar";
+
+// UI
+import { Button } from "@/ui/button";
+
+// Icons
+import { PanelRightClose } from "lucide-react";
 
 // Styles
 import style from "./Layout.module.scss";
 
-// Type
+// Interface
 import type { LayoutProps } from "@template/interface/layoutProps.interface";
-import { toast } from "sonner";
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { appData, updation } = useAppStore();
+const Layout: React.FC<LayoutProps> = ({ children, className }) => {
+  return (
+    <SidebarProvider defaultOpen={true}>
+      <LayoutContent className={className}>{children}</LayoutContent>
+    </SidebarProvider>
+  );
+};
 
-  //  Sidebar Toggle
-  const toggleSidebar = () => {
-    updation({ sideBarOpen: !appData?.sideBarOpen });
-    toast.success("Toggle done");
-  };
+const LayoutContent: React.FC<{
+  className?: string;
+  children: React.ReactNode;
+}> = ({ className, children }) => {
+  const { toggleSidebar, open } = useSidebar();
 
   return (
-    <div className={style.container}>
+    <div className={`${className} ${style.container}`}>
       {/* Sidebar */}
-      <div
-        className={`${style.sidebarContainer} ${
-          appData?.sideBarOpen ? style.sidebarOpen : ""
-        }`}
+      <aside
+        className={`${style.sidebarContainer} ${open ? style.sidebarOpen : ""}`}
       >
+        <Button name="open" variant="default" size="icon">
+          <PanelRightClose />
+        </Button>
         <Sidebar />
-      </div>
+      </aside>
 
       {/* Main Content */}
       <div
         className={`${style.mainContainer} ${
-          appData?.sideBarOpen ? style.mainContainerSidebarOpen : ""
+          open ? style.mainContainerSidebarOpen : ""
         }`}
       >
         <Header showSideBar={toggleSidebar} />

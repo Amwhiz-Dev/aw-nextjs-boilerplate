@@ -8,5 +8,14 @@
   "theming": "Thème",
   "profile": "Profil",
   "station": "Station",
-  "portal": "Portail ( Protégé )"
+  "portal": "Portail ( Protégé )",
+  "users": "Utilisateurs",
+  "component": "Composant",
+  "logout": "Déconnexion",
+  "navUser": {
+    "account": "Compte",
+    "billing": "Facturation",
+    "notifications": "Notifications",
+    "logout": "Déconnexion"
+  }
 }

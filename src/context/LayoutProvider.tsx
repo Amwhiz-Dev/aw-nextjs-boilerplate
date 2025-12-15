@@ -1,18 +1,14 @@
 "use client";
 
+import { LayoutContextType } from "@/interface/layoutProps.interface";
 import { ReactNode, createContext, useContext, useState } from "react";
-
-type LayoutContextType = {
-  sidebarOpen: boolean;
-  toggleSidebar: () => void;
-};
 
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
 
 export const LayoutProvider = ({ children }: { children: ReactNode }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   return (
     <LayoutContext.Provider value={{ sidebarOpen, toggleSidebar }}>

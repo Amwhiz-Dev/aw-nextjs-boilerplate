@@ -2,18 +2,15 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   // important: true,
-  // content: [
-  //   "./src/**/*.{js,ts,jsx,tsx}", // This already covers all src/*
-  //   "./pages/**/*.{js,ts,jsx,tsx}",
-  //   "./app/**/*.{js,ts,jsx,tsx}",
-  // ],
-  // content: ["./src/**/*.{js,ts,jsx,tsx}", "./**/*.{js,ts,jsx,tsx}"],
   content: [
     "./src/**/*.{js,ts,jsx,tsx}", // all source files
     "./src/components/**/*.{js,ts,jsx,tsx}", // make sure UI components explicitly included
   ],
   theme: {
     extend: {
+      maxWidth: {
+        skeleton: "var(--skeleton-width)", // For your skeleton placeholder
+      },
       fontFamily: {
         sans: [
           "-apple-system",
@@ -31,10 +28,11 @@ const config: Config = {
       colors: {
         primary: {
           DEFAULT: "var(--primary-color)",
-          text: "var(--primary-color-text)",
+          text: "var(--primary-text)",
           bgLight: "var(--primary-color-light)",
           menu: "var(--menu-grup-light)",
           mid: "var(--primary-color-mid)",
+          accent: "var(--accent-foreground)",
         },
         text: {
           DEFAULT: "var(--text-color)",
@@ -86,9 +84,17 @@ const config: Config = {
       spacing: {
         content: "var(--content-padding)",
         inline: "var(--inline-spacing)",
+        // Add custom sidebar widths
+        sidebar: "15rem", // 240px
+        "sidebar-mobile": "18rem", // 288px
+        "sidebar-icon": "3rem",
       },
       boxShadow: {
         focus: "var(--focus-ring)",
+        custom: "var(--tw-shadow-color)",
+        // shadow5xl: "0 35px 35px rgb(var(--shadow-color)",
+        // shadow3xl:
+        //   "0 3px 10px rgb(var(--shadow-color) / var(--shadow-opacity-strong))",
       },
     },
   },

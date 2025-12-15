@@ -1,17 +1,10 @@
 "use client";
 
+import { ModalTriggerProps } from "@/interface/modalProps.interface";
 import { Button } from "@/ui/button";
 
 // Context
 import { useModal } from "@template/context/ModalProvider";
-
-export interface ModalTriggerProps {
-  label: string;
-  title?: string;
-  description?: string;
-  onOk?: () => void;
-  onCancel?: () => void;
-}
 
 export const ModalTrigger = ({
   label,
