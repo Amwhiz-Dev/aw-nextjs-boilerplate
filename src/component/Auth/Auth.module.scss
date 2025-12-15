@@ -1,8 +1,8 @@
 .main_container {
-  @apply flex items-center justify-center min-h-screen bg-primary-bgLight;
+  @apply flex items-center justify-center min-h-screen;
 
   .login_box {
-    @apply bg-white px-12 py-[90px] rounded-lg shadow-md w-full max-w-md;
+    @apply bg-surface-card px-12 py-[90px] rounded-lg shadow-md w-full max-w-md;
 
     h2 {
       @apply text-2xl font-semibold mb-6 text-center;
@@ -12,7 +12,7 @@
       @apply mb-4;
 
       label {
-        @apply block mb-1 text-gray-700;
+        @apply block mb-1;
       }
       input {
         @apply w-full px-3 py-2 rounded;

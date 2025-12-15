@@ -1,5 +1,5 @@
 .container {
-    @apply z-[100] top-0 sticky !min-w-full bg-white py-2 pr-4 h-[65px] text-justify flex align-middle items-center justify-end;
+    @apply z-[100] top-0 sticky !min-w-full border-0 border-b border-solid border-surface-100 bg-surface-overlay py-2 pr-4 h-[65px] text-justify flex align-middle items-center justify-end;
 
     .dp {
         @apply flex align-middle items-center bg-primary-mid rounded-full text-center justify-center text-primary-text border-primary-text !size-[40px];
