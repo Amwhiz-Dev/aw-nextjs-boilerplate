@@ -97,8 +97,8 @@ const SideBar: React.FC<HeaderActionsProps> = () => {
           <NavUser
             user={user}
             showEmail={true}
-            showLang={false}
-            showTheme={false}
+            showLang={true}
+            showTheme={true}
             showInfo={true}
           />
         )}
