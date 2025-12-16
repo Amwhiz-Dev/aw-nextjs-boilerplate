@@ -1,6 +1,7 @@
-import z from "zod";
+import { z } from "zod";
 
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-={}|[\]\\:";'<>?,./]).{6,}$/;
 
@@ -20,16 +21,15 @@ export const signupSchema = z
       .min(1, "Email is required")
       .regex(emailRegex, "Enter a valid email address"),
 
-    password: z
-      .string()
-      .min(6, "Password must be at least 6 characters")
-      .regex(passwordRegex, passwordRegexMessage),
+    password: z.string().regex(passwordRegex, passwordRegexMessage),
 
     confirmPassword: z.string().min(1, "Confirm password is required"),
 
-    agree: z.boolean().refine((v) => v === true, {
-      message: "You must agree to the privacy policy",
-    }),
+    agree: z
+      .boolean()
+      .refine((v) => v === true, {
+        message: "You must agree to the privacy policy",
+      }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",

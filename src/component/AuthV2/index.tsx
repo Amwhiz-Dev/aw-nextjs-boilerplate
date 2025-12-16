@@ -44,12 +44,16 @@ import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 import { useRouter } from "next/navigation";
+import { AuthSwitch } from "../AuthSwitch";
 
 export function AuthForm({ mode, type }: AuthFormProps) {
   const isSignup = mode === AuthModeEnum.SIGNUP;
   const isOtp = type === AuthModeEnum.OTP;
   const [otpSent, setOtpSent] = React.useState(false);
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [show, setShow] = React.useState({
+    password: false,
+    confirmPassword: false,
+  });
 
   const { login, setUser } = useAuth();
   const router = useRouter();
@@ -122,8 +126,15 @@ export function AuthForm({ mode, type }: AuthFormProps) {
     }
   };
 
+  const toggleVisibility = (key: "password" | "confirmPassword") => {
+    setShow((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
   return (
-    <Card className="bg-white w-full sm:max-w-md m-auto border-0">
+    <Card className="bg-white w-full sm:max-w-md m-auto px-4 border-0 shadow-3xl">
       <CardHeader className="px-2">
         <CardTitle className="auth_title">
           {isSignup
@@ -231,16 +242,17 @@ export function AuthForm({ mode, type }: AuthFormProps) {
                       <div className="relative">
                         <Input
                           {...field}
-                          type={showPassword ? "text" : "password"}
+                          type={show.password ? "text" : "password"}
                           placeholder="••••••••"
                         />
                         <Button
                           type="button"
                           variant="ghost"
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
-                          onClick={() => setShowPassword((prev) => !prev)}
+                          className="absolute right-1 top-1/2 -translate-y-1/2 text-gray-500 bg-transparent"
+                          // onClick={() => setShowPassword((prev) => !prev)}
+                          onClick={() => toggleVisibility("password")}
                         >
-                          {!showPassword ? (
+                          {!show.password ? (
                             <EyeOff size={18} />
                           ) : (
                             <Eye size={18} />
@@ -264,7 +276,25 @@ export function AuthForm({ mode, type }: AuthFormProps) {
                         <FieldLabel>
                           {FieldLabelsEnum.CONFIRM_PASSWORD}
                         </FieldLabel>
-                        <Input {...field} type="password" />
+                        <div className="relative">
+                          <Input
+                            {...field}
+                            type={show.confirmPassword ? "text" : "password"}
+                            placeholder="••••••••"
+                          />
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            className="absolute right-1 top-1/2 -translate-y-1/2 text-gray-500 bg-transparent"
+                            onClick={() => toggleVisibility("confirmPassword")}
+                          >
+                            {!show.confirmPassword ? (
+                              <EyeOff size={18} />
+                            ) : (
+                              <Eye size={18} />
+                            )}
+                          </Button>
+                        </div>
                         {fieldState.invalid && (
                           <FieldError errors={[fieldState.error]} />
                         )}
@@ -320,7 +350,7 @@ export function AuthForm({ mode, type }: AuthFormProps) {
         </form>
       </CardContent>
 
-      <CardFooter className="flex md:flex-row justify-end flex-col gap-2">
+      <CardFooter className="flex md:flex-row justify-end flex-col gap-2 pt-3">
         <Button variant="outline" type="button" onClick={() => form.reset()}>
           {AuthTextEnum.BTN_RESET}
         </Button>
@@ -335,6 +365,7 @@ export function AuthForm({ mode, type }: AuthFormProps) {
             : AuthTextEnum.BTN_LOGIN}
         </Button>
       </CardFooter>
+      <AuthSwitch />
     </Card>
   );
 }
