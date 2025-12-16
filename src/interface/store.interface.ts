@@ -1,4 +1,5 @@
 import type { ToastMessage } from "primereact/toast";
+import { AppData } from "./appData.interface";
 
 export interface ThemeContextType {
   theme: string;
@@ -13,5 +14,10 @@ export interface LanguageContextProps {
 
 export interface UserState {
   userData: Record<string, any>;
+  updation: (data: Record<string, any>) => void;
+}
+
+export interface AppState {
+  appData: AppData;
   updation: (data: Record<string, any>) => void;
 }

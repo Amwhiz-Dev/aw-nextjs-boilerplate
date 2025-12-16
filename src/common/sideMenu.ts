@@ -1,24 +1,54 @@
-export const sideMenu = [
+// Interface
+import { MenuItem } from "@/interface/sideBar.interface";
+
+// Icons
+import { LayoutDashboard, Users, LogOut } from "lucide-react";
+
+export const sideMenu: MenuItem[] = [
   {
     label: "dashboard",
-    isGroupHead: true,
-    children: [{ label: "reports", to: "/dashboard", active: ["/dashboard"] }],
-  },
-  {
-    label: "system",
-    isGroupHead: true,
+    icon: LayoutDashboard,
+    isGroupHead: false,
     children: [
-      { label: "portal", to: "/portal", active: ["/portal"] },
-      { label: "language", to: "/language", active: ["/language"] },
-      { label: "theming", to: "/theming", active: ["/theming"] },
-      { label: "profile", to: "/profile", active: ["/profile"] },
+      {
+        label: "Dashboard",
+        to: "/dashboard",
+        active: ["/dashboard"],
+        icon: LayoutDashboard,
+      },
     ],
   },
+
   {
-    label: "station",
+    label: "users",
+    icon: Users,
+    isGroupHead: true,
+    children: [
+      {
+        label: "Users",
+        to: "/users",
+        active: ["/users"],
+        icon: Users,
+      },
+    ],
+  },
+];
+
+export const logoutMenu = [
+  {
+    label: "Logout",
+    icon: LogOut,
     isGroupHead: false,
-    to: "/station",
-    active: ["/station"],
-    children: [],
+    children: [
+      {
+        label: "Logout",
+        to: "/login",
+        active: ["/login"],
+        icon: LogOut,
+      },
+    ],
+    onClick: () => {
+      // logout();
+    },
   },
 ];

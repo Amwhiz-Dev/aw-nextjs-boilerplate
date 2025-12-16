@@ -1,7 +1,7 @@
-import Layout from "@template/Layout";
+import DashBoardLayout from "@/Layout/dashboardLayout";
 
 const Portal = () => {
-  return <Layout>Portal</Layout>;
+  return <DashBoardLayout>Portal</DashBoardLayout>;
 };
 
 export default Portal;

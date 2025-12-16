@@ -1,12 +1,16 @@
 .main_sidenav {
   @apply min-h-screen min-w-[265px] shadow-sm bg-white relative;
 
+  // .logo_dec {
+  //   @apply flex justify-between items-center gap-2;
+  // }
+
   .logo {
     @apply w-full text-2xl font-bold text-text px-4 py-4 border-b border-solid border-surface-100 sticky top-0 bg-white z-[100];
   }
 
   .nav_container {
-    @apply block max-h-[80%] overflow-scroll;
+    @apply flex flex-col justify-end h-[calc(100vh-64.8px)];
 
     .list {
       @apply list-none pl-[8px] mb-2;
@@ -24,5 +28,4 @@
       }
     }
   }
-
 }

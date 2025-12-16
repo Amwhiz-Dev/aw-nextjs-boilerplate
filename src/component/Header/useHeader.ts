@@ -1,15 +1,11 @@
 import { useRef } from "react";
-import { useNavigation } from "@template/hooks/useNavigation";
-import { useUserStore } from "@template/store/useUserStore";
+import { UserState } from "@/interface/store.interface";
+import { useUserStore } from "@/store/useUserStore";
+import React from "react";
 
 export const useHeader = () => {
   const overlayRef = useRef<any>(null);
-  const { navigate } = useNavigation();
-  const { userData } = useUserStore();
-
-  const handleLogout = () => {
-    navigate("/login");
-  };
+  const { userData } = useUserStore() as UserState;
 
   const toggleOverlay = (event: React.MouseEvent) => {
     overlayRef.current?.toggle(event);
@@ -21,7 +17,7 @@ export const useHeader = () => {
 
   return {
     overlayRef,
-    handleLogout,
+    // handleLogout,
     toggleOverlay,
     getUserInitial,
     userData,
