@@ -9,5 +9,6 @@ export const themeSwitcherColor = [
   { value: "lara-light-amber", label: "Amber" },
   { value: "tailwind-light", label: "Tailwind Light" },
   { value: "saga-blue", label: "Saga Blue" },
-  {value: "lara-dark-cyan", label: "Dark"}
+  {value: "lara-dark-cyan", label: "Lara Dark Cyan"},
+  {value: "viva-dark", label: "Viva Dark"}
 ];
