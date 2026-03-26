@@ -7,12 +7,14 @@ import { useThemeContext } from "@template/context/ThemeContext";
 import { useUserStore } from "@template/store/useUserStore";
 
 const AuthModule: React.FC = () => {
-  const { toastShow } = useThemeContext();
   const { updation } = useUserStore();
+  const { toastShow } = useThemeContext();
+
   const { formData, handleChange, handleSubmit, isMutating } = useLogin(
     toastShow,
-    updation,
+    updation
   );
+
   return (
     <div className={style.main_container}>
       <div className={style.login_box}>

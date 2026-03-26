@@ -16,7 +16,7 @@ export const useThemeState = (initialTheme: string) => {
         storage.set(THEME_STORAGE_KEY, newTheme);
       }
     },
-    [theme],
+    [theme]
   );
 
   useEffect(() => {

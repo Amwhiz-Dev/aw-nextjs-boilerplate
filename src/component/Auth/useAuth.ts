@@ -1,17 +1,28 @@
-import { ServiceKey } from "@template/enum/service.enum";
+// React
+import { useState } from "react";
+
+// PrimeReact
+import type { ToastMessage } from "primereact/toast";
+
+// Hooks / Context
+import { useToast } from "@template/context/ToastContext";
 import { useNavigation } from "@template/hooks/useNavigation";
+import useSWRMutation from "swr/mutation";
+
+// Services / Utils
 import templateService from "@template/services/template.service";
 import { getAlertError } from "@template/utils/generateToast";
 import { parseArray } from "@template/utils/parseArray";
 import { emailRegex } from "@template/utils/pattern/email.regex";
-import type { ToastMessage } from "primereact/toast";
-import { useState } from "react";
-import useSWRMutation from "swr/mutation";
+
+// Enums
+import { ServiceKey } from "@template/enum/service.enum";
 
 export const useLogin = (
   toastShow: (message: ToastMessage) => void,
-  updation: (data: Record<string, any>) => void,
+  updation: (data: Record<string, any>) => void
 ) => {
+  const { showToast } = useToast();
   const [formData, setFormData] = useState<Record<string, any>>({});
   const { navigate } = useNavigation();
   const {
@@ -20,7 +31,7 @@ export const useLogin = (
     data,
     error: swrError,
   } = useSWRMutation(ServiceKey.LOGIN, () =>
-    templateService.verifyUser(formData),
+    templateService.verifyUser(formData)
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +63,7 @@ export const useLogin = (
       toastShow(getAlertError(err?.response?.data?.message));
     } finally {
       updation(formData);
+      showToast("Saved successfully!", "success");
       navigate("/dashboard");
     }
   };

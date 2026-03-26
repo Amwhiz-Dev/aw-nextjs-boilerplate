@@ -1,48 +1,40 @@
+"use client";
+
 import type React from "react";
 import style from "./Header.module.scss";
-import { Button } from "primereact/button";
-import { OverlayPanel } from "primereact/overlaypanel";
-import ThemeSwitcher from "./ThemeSwitcher";
-import { SideBar } from "@template/enum/sideBar.enum";
-import LanguageSwither from "./LanguageSwitcher";
-import { SignoutIcon } from "../icons";
-import { useHeader } from "./useHeader";
-import type { UserButtonProps } from "@template/interface/header.interface";
 
-// Single responsibility: render user button
-const UserButton: React.FC<UserButtonProps> = ({
-  className,
-  onClick,
-  children,
-}) => {
-  return (
-    <Button className={className} onClick={onClick}>
-      {children}
-    </Button>
-  );
-};
+// Props
+import type { HeaderActionsProps } from "@template/interface/headerActionsProp.interface";
+import { SidebarTrigger } from "@/ui/sidebar";
 
-// Single responsibility: render header UI
-const Header = () => {
-  const { overlayRef, handleLogout, toggleOverlay, getUserInitial } =
-    useHeader();
+// Components
+import Breadcrumbs from "../Breadcrumbs";
 
+const Header: React.FC<HeaderActionsProps> = ({ showSideBar }) => {
   return (
     <div className={style.container}>
-      <UserButton className="user-button-color" onClick={toggleOverlay}>
-        {getUserInitial()}
-      </UserButton>
-
-      <OverlayPanel ref={overlayRef} className="overlay-container">
-        <div className="overlay-fields">
-          <LanguageSwither />
-          <ThemeSwitcher />
+      {/* Left Section */}
+      <div className={style.pageInfo}>
+        <span onClick={showSideBar} className={style.sidebarToggle}>
+          {/* <MenuIcon /> */}
+          <SidebarTrigger className="-ml-1" />
+        </span>
+        <span className={`custom_breadcrumbs ${style.breadcrumbs}`}>
+          <Breadcrumbs showIcon={true} />
+        </span>
+      </div>
+      {/* Right Section - Menubar */}
+      {/* {user && (
+        <div className="ml-auto">
+          <NavUser
+            user={user}
+            showEmail={false}
+            showLang={true}
+            showTheme={true}
+            showInfo={false}
+          />
         </div>
-        <Button className="logout-btn" onClick={handleLogout}>
-          <SignoutIcon />
-          <div className="label">{SideBar.logout}</div>
-        </Button>
-      </OverlayPanel>
+      )} */}
     </div>
   );
 };

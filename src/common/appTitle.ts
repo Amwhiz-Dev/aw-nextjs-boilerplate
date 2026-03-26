@@ -4,4 +4,5 @@ export const appTitlte = {
   dashboard: `${appName} - Dashboard`,
   login: `${appName} - Login`,
   settings: `${appName} - Settings`,
+  component: `${appName} - Component`,
 };

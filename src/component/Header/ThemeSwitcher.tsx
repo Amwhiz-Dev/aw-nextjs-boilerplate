@@ -1,35 +1,39 @@
+"use client";
+
 import { themeSwitcherColor } from "@template/common/themeSwitcher";
 import { useThemeContext } from "@template/context/ThemeContext";
-import { Dropdown } from "primereact/dropdown";
-import { FloatLabel } from "primereact/floatlabel";
+
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from "@/ui/select";
 
 const ThemeSwitcher = () => {
-  const { setTheme, theme } = useThemeContext();
-
-  const dropdownColor = (option: any) => {
-    return (
-      <div className="theme-color-placeholder">
-        <div className={`theme-color ${option?.value}`}></div>
-        <div>{option?.label}</div>
-      </div>
-    );
-  };
+  const { theme, setTheme } = useThemeContext();
 
   return (
-    <div className="themeswitcher-select">
-      <FloatLabel>
-        <Dropdown
-          inputId="dd-city"
-          value={theme}
-          onChange={(e) => setTheme(e.value)}
-          options={themeSwitcherColor}
-          optionLabel="label"
-          optionValue="value"
-          valueTemplate={dropdownColor}
-          itemTemplate={dropdownColor}
-        />
-        <label htmlFor="dd-city">Themes</label>
-      </FloatLabel>
+    <div className="w-full">
+      <label className="mb-2 block text-sm font-medium">Theme</label>
+
+      <Select value={theme} onValueChange={(value: string) => setTheme(value)}>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder="Select Theme" />
+        </SelectTrigger>
+
+        <SelectContent>
+          {themeSwitcherColor.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              <div className="flex items-center gap-2">
+                <span className={`theme-color ${item.value}`}></span>
+                {item.label}
+              </div>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 };

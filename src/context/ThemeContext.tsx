@@ -19,9 +19,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   const toastShow = useCallback((message: ToastMessage) => {
     toast?.current?.show(message);
   }, []);
+
   const value = useMemo(
     () => ({ theme, setTheme, toastShow }),
-    [theme, setTheme, toastShow],
+    [theme, setTheme, toastShow]
   );
   return (
     <ThemeContext value={value}>
